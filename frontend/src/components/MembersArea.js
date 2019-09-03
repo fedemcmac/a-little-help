@@ -24,18 +24,12 @@ class MembersArea extends Component {
     return (
       <BrowserRouter>
         <div>
-          {/* <div><button onClick={logOut}>Log out</button></div>  */}
-          {/* {this.props.user.instructions ? ( */}
-            {/* // <Redirect to="/instructions" /> */}
-          {/* // ) : ( */}
             <Navbar />
-          {/* // ) */}
-          {/* } */}
           <Route path="/instructions" component={Instructions} />
           <Route
             path="/dashboard"
             component={() => (
-              <Profile {...this.props.user} logOut={this.props.logOut} />
+              <Profile user={this.props.user} logOut={this.props.logOut} />
             )}
           />
           <Route
@@ -76,9 +70,6 @@ class MembersArea extends Component {
               />
             )}
           />
-          {/* <Route
-            path="/edit-task"
-            component={() => <JobForm submit={this.props.submitJob} />} */}
         </div>
       </BrowserRouter>
     );

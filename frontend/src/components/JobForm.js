@@ -1,5 +1,6 @@
 import React, { Component, useState } from "react";
 import Header from "./Header";
+import UserForm from "./UserForm";
 
 class JobForm extends Component {
   // const [title, setTitle] = useState('')
@@ -75,15 +76,15 @@ class JobForm extends Component {
             value={this.state.category}
             onChange={e => this.updateState(e)}
           >
-            <option value="Other">Other</option>
             <option value="Remote">Remote</option>
+            <option value="Other">Misc</option>
             <option value="Physically demanding">Physically demanding</option>
-            <option value="Other">Other</option>
             <option value="Outdoor">Outdoor</option>
             <option value="Indoor">Indoor</option>
             <option value="Animals">Animals</option>
             <option value="Elderly">Elderly</option>
             <option value="Children">Children</option>
+            <option value="Other">Other</option>
           </select>
           <br />
           <label>Description:</label>
@@ -93,7 +94,7 @@ class JobForm extends Component {
             onChange={e => this.updateState(e)}
           />
           <br />
-          <input type="submit" value="Create Job" />
+          <button>{this.props.jobToEdit ? "EDIT JOB" : "CREATE JOB"}</button>
         </form>
       </div>
     );
