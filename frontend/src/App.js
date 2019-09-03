@@ -84,7 +84,8 @@ class App extends Component {
   };
 
   editJob = job => {
-    API.editJob(job);
+    
+    // API.editJob(job);
   };
 
   deleteJob = id => {

@@ -73,6 +73,10 @@ class MembersArea extends Component {
               />
             )}
           />
+          {/* <Route
+            path="/edit-task"
+            component={() => <JobForm submit={this.props.submitJob} />} */}
+          />
         </div>
       </BrowserRouter>
     );
