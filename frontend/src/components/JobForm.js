@@ -11,7 +11,8 @@ class JobForm extends Component {
     title: "",
     summary: "",
     category: "",
-    description: ""
+    description: "",
+    id: null
   };
 
   updateState = event => {
@@ -19,13 +20,13 @@ class JobForm extends Component {
   };
 
   componentDidMount() {
-    debugger;
     if (this.props.jobToEdit) {
       this.setState({
         title: this.props.jobToEdit.title,
         summary: this.props.jobToEdit.summary,
         category: this.props.jobToEdit.category,
-        description: this.props.jobToEdit.description
+        description: this.props.jobToEdit.description,
+        id: this.props.jobToEdit.id
       });
       console.log(this.props.jobToEdit);
     }
@@ -43,7 +44,8 @@ class JobForm extends Component {
               title: "",
               summary: "",
               category: "",
-              description: ""
+              description: "",
+              id: null
             });
           }}
         >

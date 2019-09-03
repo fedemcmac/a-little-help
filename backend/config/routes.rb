@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   namespace :api do
         resources :users #, only: [:index, :create, :show]
         resources :jobs #, only: [:index, :create, :show, :update]
-        post '/login', to: 'auth#create'
+        post '/login', to: 'auth#login'
         get '/validate', to: 'auth#validate_token'
         get '/browse_jobs', to: 'jobs#browse_jobs'
         post '/accept_job', to: 'jobs#accept_job'

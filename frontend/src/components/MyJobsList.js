@@ -13,7 +13,7 @@ const MyJobsList = ({ createdJobs, helpingJobs, dropJob, deleteJob, redirectToTa
             {createdJobs.length === 0 ?
             "You haven't created any tasks yet" :
                 createdJobs.map(job => 
-                <JobCard key={job.id} job={job} handleButtonClick={deleteJob} buttonText="DELETE TASK" handleJobClick={redirectToTaskShowPage}/>)
+                <JobCard key={job.id} job={job} handleButtonClick={deleteJob} buttonText="DELETE TASK" handleJobClick={redirectToTaskShowPage} />)
             }
         </div>
     )

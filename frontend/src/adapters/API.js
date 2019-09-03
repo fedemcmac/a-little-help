@@ -123,7 +123,15 @@ const showJob = id => {
 };
 
 const editJob = job => {
-  console.log(`edit this job ${job.id}`);
+  // console.log(`edit this job ${job.id}`);
+  return fetch(jobsUrl + `/${job.id}`, {
+    method: "PATCH",
+    body: JSON.stringify({ job: job }),
+    headers: constructHeaders({
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    })
+  }).then(jsonify);
 };
 
 export default {

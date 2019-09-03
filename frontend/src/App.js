@@ -20,22 +20,29 @@ class App extends Component {
     API.validateUser().then(user => {
       if (!user.error) {
         this.setState({ user: user });
-        // this.props.history.push('/')
       } else {
         this.props.history.push("/welcome");
       }
-      API.getJobs().then(data => this.setState({ jobs: data }));
     });
   }
-
+  
+  fetchOthersJobs = () => {
+    console.log('ciao')
+    return API.getJobs().then(data => this.setState({ jobs: data }))
+  }
+  
   signUp = user => {
-    API.signUp(user).then(user => this.setState({ user: user }));
-    API.getJobs().then(data => this.setState({ jobs: data }));
+    API.signUp(user)
+    .then(data => this.setState({ user: data }))
+    .then(this.props.history.push("/dashboard"))
+    this.props.history.push("/instructions");
   };
 
   logIn = user => {
-    API.logIn(user).then(user => this.setState({ user: user }));
-    API.getJobs().then(data => this.setState({ jobs: data }));
+    API.logIn(user)
+      .then(user => this.setState({ user: user }))
+      .then(this.props.history.push("/dashboard"))
+      // .then(API.getJobs().then(data => this.setState({ jobs: data })))
   };
 
   logOut = () => {
@@ -46,7 +53,12 @@ class App extends Component {
 
   submitJob = job => {
     API.postJob(job).then(data =>
-      this.setState({ user: { ...this.state.user.created_jobs, data } })
+      this.setState({
+        user: {
+          ...this.state.user,
+          created_jobs: [this.state.user.created_jobs, data.job]
+        }
+      })
     );
     // .catch(errorPromise => {
     //   errorPromise
@@ -67,7 +79,7 @@ class App extends Component {
       user: {
         ...this.state.user,
         helping_jobs: this.state.user.helping_jobs.filter(job => job.id !== id)
-      },
+      }
     });
   };
 
@@ -84,8 +96,17 @@ class App extends Component {
   };
 
   editJob = job => {
-    
-    // API.editJob(job);
+    API.editJob(job).then(data =>
+      this.setState({
+        user: {
+          ...this.state.user,
+          created_jobs: [
+            this.state.user.created_jobs.filter(job => job.id !== data.id),
+            data
+          ]
+        }
+      })
+    );
   };
 
   deleteJob = id => {
@@ -95,7 +116,7 @@ class App extends Component {
         ...this.state.user,
         created_jobs: this.state.user.created_jobs.filter(job => job.id !== id)
       }
-    })
+    });
     this.props.history.push("/my-tasks");
   };
 
@@ -115,6 +136,7 @@ class App extends Component {
             path={"/"}
             component={() => (
               <MembersArea
+                fetchOthersJobs={this.fetchOthersJobs}
                 submitJob={this.submitJob}
                 logOut={this.logOut}
                 user={this.state.user}

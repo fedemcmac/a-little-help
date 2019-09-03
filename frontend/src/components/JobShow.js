@@ -23,7 +23,7 @@ class JobShow extends Component {
   renderJob = () => {
     if (this.state.selectedJob !== null) {
       return this.state.edit
-      ? <JobForm jobToEdit={this.state.selectedJob} />
+      ? <JobForm jobToEdit={this.state.selectedJob} submit={this.props.editJob} />
       : (
         <div>
           <h2>Title: {this.state.selectedJob.title}</h2>
@@ -36,8 +36,6 @@ class JobShow extends Component {
               <button
                 onClick={
                   () => this.setState({ edit: true })
-                  // () => this.props.history.push("/edit-task")
-                  // this.props.editJob(this.state.selectedJob)
                 }
               >
                 EDIT TASK

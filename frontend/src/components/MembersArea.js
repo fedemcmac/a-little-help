@@ -11,22 +11,26 @@ import JobShow from "./JobShow";
 
 // check if this component really needs to be a class
 class MembersArea extends Component {
+  
   redirectToTaskShowPage = id => {
     this.props.history.push("/task/:id".replace(":id", id));
   };
+
+  componentDidMount() {
+    // this.props.fetchOthersJobs()
+  }
 
   render() {
     return (
       <BrowserRouter>
         <div>
           {/* <div><button onClick={logOut}>Log out</button></div>  */}
-          {this.props.user.instructions ? (
-            <Redirect to="/instructions" />
-          ) : (
+          {/* {this.props.user.instructions ? ( */}
+            {/* // <Redirect to="/instructions" /> */}
+          {/* // ) : ( */}
             <Navbar />
-          )
-          // <Redirect to="/dashboard" />
-          }
+          {/* // ) */}
+          {/* } */}
           <Route path="/instructions" component={Instructions} />
           <Route
             path="/dashboard"
@@ -51,7 +55,6 @@ class MembersArea extends Component {
                 createdJobs={this.props.user.created_jobs}
                 helpingJobs={this.props.user.helping_jobs}
                 dropJob={this.props.dropJob}
-                editJob={this.props.editJob}
                 deleteJob={this.props.deleteJob}
                 redirectToTaskShowPage={this.redirectToTaskShowPage}
               />
@@ -76,7 +79,6 @@ class MembersArea extends Component {
           {/* <Route
             path="/edit-task"
             component={() => <JobForm submit={this.props.submitJob} />} */}
-          />
         </div>
       </BrowserRouter>
     );
