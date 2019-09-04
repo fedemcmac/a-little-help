@@ -94,7 +94,7 @@ class JobForm extends Component {
             onChange={e => this.updateState(e)}
           />
           <br />
-          <button>{this.props.jobToEdit ? "EDIT JOB" : "CREATE JOB"}</button>
+          <button>{this.props.jobToEdit ? "EDIT TASK" : "CREATE TASK"}</button>
         </form>
       </div>
     );

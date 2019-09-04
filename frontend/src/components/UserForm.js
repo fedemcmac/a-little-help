@@ -41,6 +41,7 @@ class UserForm extends Component {
             />
             <br />
           <button value="Create Job">SUBMIT</button></form>
+          <button onClick={() => {console.log("delete")}}>DELETE ACCOUNT</button>
       </div>
     );
   }

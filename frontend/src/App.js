@@ -20,29 +20,30 @@ class App extends Component {
     API.validateUser().then(user => {
       if (!user.error) {
         this.setState({ user: user });
+        console.log(user); /////////////////////
       } else {
         this.props.history.push("/welcome");
       }
     });
   }
-  
+
   fetchOthersJobs = () => {
-    console.log('ciao')
-    return API.getJobs().then(data => this.setState({ jobs: data }))
-  }
-  
+    console.log("ciao");
+    return API.getJobs().then(data => this.setState({ jobs: data }));
+  };
+
   signUp = user => {
     API.signUp(user)
-    .then(data => this.setState({ user: data }))
-    .then(this.props.history.push("/dashboard"))
+      .then(data => this.setState({ user: data }))
+      .then(this.props.history.push("/dashboard"));
     this.props.history.push("/instructions");
   };
 
   logIn = user => {
     API.logIn(user)
       .then(user => this.setState({ user: user }))
-      .then(this.props.history.push("/dashboard"))
-      // .then(API.getJobs().then(data => this.setState({ jobs: data })))
+      .then(this.props.history.push("/dashboard"));
+    // .then(API.getJobs().then(data => this.setState({ jobs: data })))
   };
 
   logOut = () => {
@@ -134,8 +135,9 @@ class App extends Component {
         {this.state.user ? (
           <Route
             path={"/"}
-            component={() => (
+            render={routerProps => (
               <MembersArea
+                {...routerProps}
                 fetchOthersJobs={this.fetchOthersJobs}
                 submitJob={this.submitJob}
                 logOut={this.logOut}
@@ -152,7 +154,7 @@ class App extends Component {
         ) : (
           <Route
             path={"/welcome"}
-            component={() => (
+            render={() => (
               <Welcome
                 signUp={this.signUp}
                 logIn={this.logIn}

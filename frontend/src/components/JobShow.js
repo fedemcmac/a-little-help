@@ -10,6 +10,7 @@ class JobShow extends Component {
   };
 
   componentDidMount() {
+    // debugger;
     const jobId = this.props.match.params.id;
     API.showJob(jobId).then(job => {
       if (job.error) {
@@ -20,58 +21,51 @@ class JobShow extends Component {
     });
   }
 
-  renderJob = () => {
-    if (this.state.selectedJob !== null) {
-      return this.state.edit
-      ? <JobForm jobToEdit={this.state.selectedJob} submit={this.props.editJob} />
-      : (
+  renderJob = job => {
+    debugger;
+    if (job !== null) {
+      return this.state.edit ? (
+        <JobForm jobToEdit={job} submit={this.props.editJob} />
+      ) : (
         <div>
-          <h2>Title: {this.state.selectedJob.title}</h2>
-          <h3>Summary: {this.state.selectedJob.title}</h3>
-          <h4>Category: {this.state.selectedJob.category}</h4>
+          <h2>Title: {job.title}</h2>
+          <h3>Summary: {job.title}</h3>
+          <h4>Category: {job.category}</h4>
           <h4>Description: </h4>
-          <p>{this.state.selectedJob.description}</p>
-          {this.state.selectedJob.owner.id === this.props.userId ? (
+          <p>{job.description}</p>
+          {job.owner.id === this.props.userId ? (
             <div>
-              <button
-                onClick={
-                  () => this.setState({ edit: true })
-                }
-              >
+              <button onClick={() => this.setState({ edit: true })}>
                 EDIT TASK
               </button>
-              <button
-                onClick={() => this.props.deleteJob(this.state.selectedJob.id)}
-              >
+              <button onClick={() => this.props.deleteJob(job.id)}>
                 DELETE TASK
               </button>
             </div>
-          ) : this.state.selectedJob.helpers.find(
-              user => user.id === this.props.userId
-            ) ? (
-            <button
-              onClick={() => this.props.dropJob(this.state.selectedJob.id)}
-            >
+          ) : job.helpers.find(user => user.id === this.props.userId) ? (
+            <button onClick={() => this.props.dropJob(job.id)}>
               DROP TASK
             </button>
           ) : (
-            <button
-              onClick={() => this.props.acceptJob(this.state.selectedJob.id)}
-            >
+            <button onClick={() => this.props.acceptJob(job.id)}>
               ACCEPT TASK
             </button>
           )}
-          <Route
+          {/* <Route
             path="/edit-task"
-            component={() => <JobForm jobToEdit={this.state.selectedJob} />} //submit={this.props.submitJob}
-          />
+            component={() => <JobForm jobToEdit={task} />} //submit={this.props.submitJob}
+          /> */}
         </div>
       );
     }
   };
 
   render() {
-    return <div>{this.renderJob()}</div>;
+    const targetJob =
+      // this.props.allJobs.find(t => t.id == this.props.match.params.id) ||
+      null;
+
+    return <div>{this.renderJob(targetJob)}</div>;
   }
 }
 
