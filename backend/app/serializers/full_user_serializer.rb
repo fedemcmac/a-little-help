@@ -1,5 +1,8 @@
 class FullUserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :email, :instructions
-  has_many :created_jobs
-  has_many :helping_jobs
+  attributes :id, :username, :email, :helping_jobs_ids
+  
+  def helping_jobs_ids
+      object.helping_jobs.map {|job| job.id}
+  end
+
 end

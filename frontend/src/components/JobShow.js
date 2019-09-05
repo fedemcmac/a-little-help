@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter, Route } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import API from "../adapters/API";
 import JobForm from "./JobForm";
 
@@ -12,6 +12,7 @@ class JobShow extends Component {
   componentDidMount() {
     // debugger;
     const jobId = this.props.match.params.id;
+    console.log(jobId)
     API.showJob(jobId).then(job => {
       if (job.error) {
         console.log("Invalid job id");
@@ -22,7 +23,7 @@ class JobShow extends Component {
   }
 
   renderJob = job => {
-    debugger;
+    // console.log(this.state.selectedJob)
     if (job !== null) {
       return this.state.edit ? (
         <JobForm jobToEdit={job} submit={this.props.editJob} />

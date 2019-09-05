@@ -17,8 +17,8 @@ class Profile extends Component {
            return (<div>
             <h3>Username: {this.props.user.username}</h3>
             <h3>{this.props.user.email}</h3>
-            <h3>Tasks created:{this.props.user.created_jobs.length}</h3>
-            <h3>Tasks booked:{this.props.user.helping_jobs.length}</h3>
+            <h3>Tasks created:{this.props.userCreatedJobs.length}</h3>
+            <h3>Tasks booked:{this.props.userHelpingJobs.length}</h3>
             {/* implement photo upload */}
             <button>
               <Link className="wordLink" to="/instructions">

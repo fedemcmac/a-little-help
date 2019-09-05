@@ -2,18 +2,19 @@ import React from "react";
 import JobCard from "./JobCard";
 
 const MyJobsList = ({
-  createdJobs,
-  helpingJobs,
+  userCreatedJobs,
+  userHelpingJobs,
   dropJob,
   deleteJob,
   redirectToJobShowPage
 }) => {
+  // console.log("helping", userHelpingJobs);
   return (
     <div className="scrollable">
       <h3>Accepted tasks:</h3>
-      {helpingJobs.length === 0
+      {/* {userHelpingJobs.length === 0
         ? "You haven't volunteered for any tasks yet"
-        : helpingJobs.map(job => (
+        : userHelpingJobs.map(job => (
             <JobCard
               key={job.id}
               job={job}
@@ -21,12 +22,12 @@ const MyJobsList = ({
               buttonText="DROP TASK"
               handleJobClick={redirectToJobShowPage}
             />
-          ))}
+          ))} */}
 
       <h3>Created tasks:</h3>
-      {createdJobs.length === 0
+      {userCreatedJobs.length === 0
         ? "You haven't created any tasks yet"
-        : createdJobs.map(job => (
+        : userCreatedJobs.map(job => (
             <JobCard
               key={job.id}
               job={job}

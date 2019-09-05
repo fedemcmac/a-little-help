@@ -5,7 +5,8 @@ Rails.application.routes.draw do
         resources :jobs #, only: [:index, :create, :show, :update]
         post '/login', to: 'auth#login'
         get '/validate', to: 'auth#validate_token'
-        get '/browse_jobs', to: 'jobs#browse_jobs'
+        # get '/browse_jobs', to: 'jobs#browse_jobs' 
+        get '/jobs', to: 'jobs#index'
         post '/accept_job', to: 'jobs#accept_job'
         delete '/drop_job', to: 'users#drop_job'
         # update '/edit_job', to: 'tasks#update'

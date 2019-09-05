@@ -2,7 +2,7 @@ const endpoint = "http://localhost:3000/api";
 const signupUrl = `${endpoint}/users`;
 const loginUrl = `${endpoint}/login`;
 const jobsUrl = `${endpoint}/jobs`;
-const filteredJobsUrl = `${endpoint}/browse_jobs`;
+// const filteredJobsUrl = `${endpoint}/browse_jobs`;
 const validateUrl = `${endpoint}/validate`;
 const dropJobUrl = `${endpoint}/drop_job`;
 const acceptJobUrl = `${endpoint}/accept_job`;
@@ -76,12 +76,13 @@ const postJob = job =>
     .catch(handleServerError);
 
 const getJobs = () =>
-  fetch(filteredJobsUrl, {
+  fetch(jobsUrl, {
     headers: constructHeaders({
       "Content-Type": "application/json",
       Accept: "application/json"
     })
-  }).then(jsonify);
+  }).then(jsonify)
+  
 
 const clearToken = () => localStorage.removeItem("token");
 

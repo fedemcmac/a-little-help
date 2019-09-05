@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { withRouter, BrowserRouter, Route, Switch } from "react-router-dom";
-// import Dashboard from './Dashboard'
+import { Route, Switch } from "react-router-dom";
 import Instructions from "./Instructions";
 import Profile from "./Profile";
 import BrowseJobsList from "./BrowseJobsList";
@@ -28,14 +27,19 @@ class MembersArea extends Component {
           <Route
             path="/dashboard"
             component={() => (
-              <Profile user={this.props.user} logOut={this.props.logOut} />
+              <Profile
+                user={this.props.user}
+                userCreatedJobs={this.props.userCreatedJobs()}
+                userHelpingJobs={this.props.userHelpingJobs()}
+                logOut={this.props.logOut}
+              />
             )}
           />
           <Route
             path="/browse-tasks"
             component={() => (
               <BrowseJobsList
-                jobs={this.props.jobs}
+                availableJobs={this.props.availableJobs()}
                 acceptJob={this.props.acceptJob}
                 redirectToJobShowPage={this.redirectToJobShowPage}
               />
@@ -45,8 +49,8 @@ class MembersArea extends Component {
             path="/my-tasks"
             render={() => (
               <MyJobsList
-                createdJobs={this.props.user.created_jobs}
-                helpingJobs={this.props.user.helping_jobs}
+                userCreatedJobs={this.props.userCreatedJobs()}
+                userHelpingJobs={this.props.userHelpingJobs()}
                 dropJob={this.props.dropJob}
                 deleteJob={this.props.deleteJob}
                 redirectToJobShowPage={this.redirectToJobShowPage}
@@ -61,11 +65,11 @@ class MembersArea extends Component {
             path="/task/:id"
             render={() => (
               <JobShow
-                allJobs={[
-                  ...this.props.jobs,
-                  ...this.props.user.created_jobs,
-                  ...this.props.user.helping_jobs
-                ]}
+                // allJobs={[
+                //   ...this.props.jobs,
+                //   ...this.props.user.created_jobs,
+                //   ...this.props.user.helping_jobs
+                // ]}
                 userId={this.props.user.id}
                 acceptJob={this.props.acceptJob}
                 dropJob={this.props.dropJob}
