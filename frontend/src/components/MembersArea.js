@@ -15,6 +15,7 @@ class MembersArea extends Component {
   };
 
   componentDidMount() {
+    console.log('members area')
     this.props.fetchOthersJobs();
   }
 
@@ -29,8 +30,8 @@ class MembersArea extends Component {
             component={() => (
               <Profile
                 user={this.props.user}
-                userCreatedJobs={this.props.userCreatedJobs()}
-                userHelpingJobs={this.props.userHelpingJobs()}
+                userCreatedJobs={this.props.userCreatedJobs}
+                userHelpingJobs={this.props.userHelpingJobs}
                 logOut={this.props.logOut}
               />
             )}
@@ -39,7 +40,7 @@ class MembersArea extends Component {
             path="/browse-tasks"
             component={() => (
               <BrowseJobsList
-                availableJobs={this.props.availableJobs()}
+                availableJobs={this.props.availableJobs}
                 acceptJob={this.props.acceptJob}
                 redirectToJobShowPage={this.redirectToJobShowPage}
               />
@@ -49,8 +50,8 @@ class MembersArea extends Component {
             path="/my-tasks"
             render={() => (
               <MyJobsList
-                userCreatedJobs={this.props.userCreatedJobs()}
-                userHelpingJobs={this.props.userHelpingJobs()}
+                userCreatedJobs={this.props.userCreatedJobs}
+                userHelpingJobs={this.props.userHelpingJobs}
                 dropJob={this.props.dropJob}
                 deleteJob={this.props.deleteJob}
                 redirectToJobShowPage={this.redirectToJobShowPage}

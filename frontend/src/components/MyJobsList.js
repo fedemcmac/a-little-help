@@ -12,7 +12,7 @@ const MyJobsList = ({
   return (
     <div className="scrollable">
       <h3>Accepted tasks:</h3>
-      {/* {userHelpingJobs.length === 0
+      {userHelpingJobs.length === 0
         ? "You haven't volunteered for any tasks yet"
         : userHelpingJobs.map(job => (
             <JobCard
@@ -21,8 +21,8 @@ const MyJobsList = ({
               handleButtonClick={dropJob}
               buttonText="DROP TASK"
               handleJobClick={redirectToJobShowPage}
-            />
-          ))} */}
+            /> 
+          ))}
 
       <h3>Created tasks:</h3>
       {userCreatedJobs.length === 0
