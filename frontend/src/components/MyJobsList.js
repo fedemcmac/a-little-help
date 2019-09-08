@@ -8,7 +8,6 @@ const MyJobsList = ({
   deleteJob,
   redirectToJobShowPage
 }) => {
-  // console.log("helping", userHelpingJobs);
   return (
     <div className="scrollable">
       <h3>Accepted tasks:</h3>

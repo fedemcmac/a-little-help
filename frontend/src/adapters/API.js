@@ -2,7 +2,6 @@ const endpoint = "http://localhost:3000/api";
 const signupUrl = `${endpoint}/users`;
 const loginUrl = `${endpoint}/login`;
 const jobsUrl = `${endpoint}/jobs`;
-// const filteredJobsUrl = `${endpoint}/browse_jobs`;
 const validateUrl = `${endpoint}/validate`;
 const dropJobUrl = `${endpoint}/drop_job`;
 const acceptJobUrl = `${endpoint}/accept_job`;
@@ -14,7 +13,6 @@ const jsonify = res => {
 };
 
 const handleServerError = response => {
-  // console.error(response)
   throw response;
 };
 
@@ -108,8 +106,6 @@ const deleteJob = id =>
     })
   });
 
-// delete '/drop_task', to: 'users#drop_task'
-
 const acceptJob = id =>
   fetch(acceptJobUrl, {
     method: "POST",
@@ -127,7 +123,6 @@ const showJob = id => {
 };
 
 const editJob = job => {
-  // console.log(`edit this job ${job.id}`);
   return fetch(jobsUrl + `/${job.id}`, {
     method: "PATCH",
     body: JSON.stringify({ job: job }),

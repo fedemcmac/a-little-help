@@ -1,23 +1,26 @@
 import React, { Component } from "react";
 import "./App.css";
 import API from "./adapters/API";
-import Welcome from "./components/Welcome";import { withRouter, Route } from "react-router-dom";
+import Welcome from "./components/Welcome";
+import { withRouter, Route } from "react-router-dom";
 import MembersArea from "./components/MembersArea";
 
 class App extends Component {
   state = {
     user: undefined,
-    jobs: [],
+    jobs: []
   };
 
   componentDidMount() {
-    API.validateUser().then(user => {
-      if (!user.error) {
-        this.setState({ user: user })
-      } else {
-        this.props.history.push("/welcome");
-      }
-    }).then(() => this.fetchJobs())
+    API.validateUser()
+      .then(user => {
+        if (!user.error) {
+          this.setState({ user: user });
+        } else {
+          this.props.history.push("/welcome");
+        }
+      })
+      .then(() => this.fetchJobs());
   }
 
   fetchJobs = () => {
@@ -25,7 +28,7 @@ class App extends Component {
   };
 
   userCreatedJobs = () => {
-    return this.state.jobs.filter(job => job.owner.id === this.state.user.id)
+    return this.state.jobs.filter(job => job.owner.id === this.state.user.id);
   };
 
   userHelpingJobs = () => {
@@ -37,26 +40,25 @@ class App extends Component {
   };
 
   availableJobs = () => {
-    const helping_jobs = this.userHelpingJobs()
-    const created_jobs = this.userCreatedJobs()
+    const helping_jobs = this.userHelpingJobs();
+    const created_jobs = this.userCreatedJobs();
     return this.state.jobs.filter(job => {
-      return !helping_jobs.includes(job) && !created_jobs.includes(job)
-    })
+      return !helping_jobs.includes(job) && !created_jobs.includes(job);
+    });
   };
 
   signUp = user => {
     API.signUp(user)
       .then(data => this.setState({ user: data }))
-      .then(this.fetchJobs())
-      .then(this.props.history.push("/dashboard"));
-    this.props.history.push("/instructions");
+      .then(() => this.fetchJobs())
+      .then(this.props.history.push("/instructions"));
   };
 
   logIn = user => {
     API.logIn(user)
       .then(user => {
-        console.log('setting user state')
-        this.setState({ user: user })
+        console.log("setting user state");
+        this.setState({ user: user });
       })
       .then(() => this.fetchJobs())
       .then(this.props.history.push("/dashboard"));
@@ -74,30 +76,19 @@ class App extends Component {
         jobs: [...this.state.jobs, data.job]
       })
     );
-    // .catch(errorPromise => {
-    //   errorPromise
-    //     .then(data => {
-    //       this.setState({ errors: data.errors })
-    //     })
-    // })
   };
-  /////////////////////////////////////////
-  findHelpingJob = id => {
-    return this.state.user.helping_jobs.find(job => job.id === id);
-  };
-////////////////////////////////
+
   dropJob = id => {
     API.dropJob(id).then(
       this.setState({
         user: {
           ...this.state.user,
           helping_jobs_ids: this.state.user.helping_jobs_ids.filter(jobId => {
-            return jobId !== id
-          }
-          )
+            return jobId !== id;
+          })
         }
       })
-    )
+    );
   };
 
   acceptJob = id => {
@@ -114,26 +105,26 @@ class App extends Component {
   editJob = job => {
     API.editJob(job).then(data =>
       this.setState({
-        jobs: [this.state.jobs, data]
+        jobs: [
+          ...this.state.jobs.filter(job => job.id !== data.job.id),
+          data.job
+        ]
       })
     );
+    this.props.history.push("/my-tasks");
   };
 
   deleteJob = id => {
     API.deleteJob(id);
     this.setState({
-      jobs: [this.state.jobs.filter(job => job.id === id)]
+      jobs: this.state.jobs.filter(job => job.id !== id)
     });
     this.props.history.push("/my-tasks");
   };
 
-  // findJob = id => {
-  //   return (
-  //     this.state.jobs.find(job => job.id === id) ||
-  //     this.state.user.created_jobs.find(job => job.id === id) ||
-  //     this.state.user.helping_jobs.find(job => job.id === id)
-  //   );
-  // };
+  findJob = id => {
+    return this.state.jobs.find(job => job.id === parseInt(id));
+  };
 
   render() {
     return (
@@ -155,7 +146,7 @@ class App extends Component {
                 dropJob={this.dropJob}
                 editJob={this.editJob}
                 deleteJob={this.deleteJob}
-                // findJob={this.findJob}
+                findJob={this.findJob}
               />
             )}
           />
@@ -170,21 +161,7 @@ class App extends Component {
               />
             )}
           />
-        )
-        // <div><button onClick={this.logOut}>Log out</button></div>
-        }
-
-        {/* <Route exact path="/login" component={Login} handleSubmit={this.logIn}/>
-        <Route exact path="/signup" component={Signup} handleSubmit={this.signUp}/> */}
-        {/* { !this.state.user ? 
-        <Home signUp={this.signUp} logIn={this.logIn}/> 
-        : 
-        <div><button onClick={this.logOut}>Log out</button></div> } */}
-        {/* {this.state.user && */}
-
-        {/* <PrivateRoute path="/create-job" user={this.state.user} component={JobForm} submit={this.submitJob}/> */}
-        {/* <JobForm submit={this.submitJob}/> */}
-        {/* } */}
+        )}
       </div>
     );
   }

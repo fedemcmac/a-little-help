@@ -9,15 +9,11 @@ import Navbar from "./Navbar";
 import JobShow from "./JobShow";
 
 class MembersArea extends Component {
+
   redirectToJobShowPage = id => {
     console.log('called redirect')
     this.props.history.replace({ pathname: "/task/" + id });
   };
-
-  // componentDidMount() {
-  //   console.log('members area')
-  //   this.props.fetchJobs();
-  // }
 
   render() {
     return (
@@ -66,12 +62,8 @@ class MembersArea extends Component {
             path="/task/:id"
             render={() => (
               <JobShow
-                // allJobs={[
-                //   ...this.props.jobs,
-                //   ...this.props.user.created_jobs,
-                //   ...this.props.user.helping_jobs
-                // ]}
-                userId={this.props.user.id}
+                findJob={this.props.findJob}
+                user={this.props.user}
                 acceptJob={this.props.acceptJob}
                 dropJob={this.props.dropJob}
                 editJob={this.props.editJob}
