@@ -1,5 +1,40 @@
+html,
+body {
+  height: 100%;
+  margin: 0px;
+}
+
+#root {
+  height: 100%;
+}
+
+.noMarginTop {
+  margin-top: 0;
+}
+
 .App {
   text-align: center;
+  font-family: "Roboto", sans-serif;
+  height: 100%;
+}
+
+.mainTitle {
+  padding-top: 5rem;
+  margin-top: 0;
+  font-family: Phosphate-Solid;
+  font-size: 45px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 1.25px;
+  text-shadow: 0 -1px -0px #d81a61, -1px 0 -0px #d81a61, -1px -2px 1px #d81a61,
+    -2px -1px 1px #d81a61, -2px -3px 1px #d81a61, -3px -2px 1px #d81a61,
+    -3px -4px 1px #d81a61, -4px -3px 1px #d81a61, -4px -5px 1px #d81a61,
+    -5px -4px 1px #d81a61, -5px -6px 1px #d81a61, -6px -5px 1px #d81a61,
+    -6px -7px 1px #d81a61, -7px -6px 1px #d81a61, -7px -8px 0px #d81a61,
+    -8px -7px 0px #d81a61;
+  color: white;
 }
 
 .navbar {
@@ -26,11 +61,55 @@
   background-color: #01bcd6;
 }
 
-.backButton {
+/* .backButton {
   position: relative;
   left: 0;
-}
+} */
 
 button {
-  background-color: yellow
+  width: 45%;
+  height: 40px;
+  background-color: #d81a61;
+}
+
+.blueBackground {
+  position: relative;
+  background-color: #01bcd6;
+  height: 100%;
+}
+
+.ButtonPinkCenter {
+  border-radius: 5px;
+  border-width: 0;
+  margin: 5px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 1.25px;
+  text-align: center;
+  color: white;
+}
+
+.welcomeButtonContainer {
+  margin-top: 5rem;
+}
+
+.handsContainer {
+  position: absolute;
+  margin-top: 3.2rem;
+  bottom: 0;
+  width: 100%;
+  height: 34%;
+}
+
+.hands {
+  background-image: url("./heartHandsps1.png");
+  position: center;
+  background-size: contain;
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }

@@ -15,8 +15,8 @@ class Welcome extends Component {
   render() {
     let { signUp, logIn } = this.props;
     return (
-      <div>
-        <h1> A Little Help </h1>
+      <div className="blueBackground">
+        <h1 className="mainTitle"> A LITTLE HELP </h1>
         <h3>
           {" "}
           Independent volunteering <br /> on the micro scale{" "}
@@ -32,12 +32,17 @@ class Welcome extends Component {
           />
         </Switch>
         {this.props.location.pathname === "/welcome" ? (
-          <>
-            <button onClick={this.goLogin}>LOGIN</button>
+          <div className="welcomeButtonContainer">
+            <button className="ButtonPinkCenter" onClick={this.goLogin}>
+              LOGIN
+            </button>
             <br />
-            <button onClick={this.goSignup}>SIGN UP</button>
-          </>
+            <button className="ButtonPinkCenter" onClick={this.goSignup}>
+              SIGN UP
+            </button>
+          </div>
         ) : null}
+        <div className="handsContainer"><div className="hands"></div></div>
       </div>
     );
   }

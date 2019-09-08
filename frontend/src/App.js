@@ -16,11 +16,11 @@ class App extends Component {
       .then(user => {
         if (!user.error) {
           this.setState({ user: user });
+          this.fetchJobs()
         } else {
           this.props.history.push("/welcome");
         }
       })
-      .then(() => this.fetchJobs());
   }
 
   fetchJobs = () => {
