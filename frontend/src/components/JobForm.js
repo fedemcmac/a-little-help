@@ -50,7 +50,6 @@ class JobForm extends Component {
             });
           }}
         >
-          <label>Title:</label>
           <input
             placeholder="Title"
             type="text"
@@ -59,23 +58,21 @@ class JobForm extends Component {
             onChange={e => this.updateState(e)}
           />
           <br />
-          <label>Summary:</label>
           <input
-            placeholder="Summary"
+            placeholder="Short description"
             type="text"
             name="summary"
             value={this.state.summary}
             onChange={e => this.updateState(e)}
           />
           <br />
-          <label>Category:</label>
-          <select
-            placeholder="Email"
-            type="email"
+          <label className="plainText">Category:</label>
+          <select 
             name="category"
             value={this.state.category}
             onChange={e => this.updateState(e)}
           >
+            <option value="N/A">N/A</option>
             <option value="Remote">Remote</option>
             <option value="Other">Misc</option>
             <option value="Physically demanding">Physically demanding</option>
@@ -86,15 +83,15 @@ class JobForm extends Component {
             <option value="Children">Children</option>
             <option value="Other">Other</option>
           </select>
-          <br />
-          <label>Description:</label>
-          <textarea
+          <br /><br />
+          <label className="plainText"> Describe the help you need here: </label>
+          <textarea 
             name="description"
             value={this.state.description}
             onChange={e => this.updateState(e)}
           />
           <br />
-          <button>{this.props.jobToEdit ? "EDIT TASK" : "CREATE TASK"}</button>
+          <button className="ButtonPinkCenter">{this.props.jobToEdit ? "EDIT TASK" : "CREATE TASK"}</button>
         </form>
       </div>
     );

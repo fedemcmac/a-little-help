@@ -15,21 +15,29 @@ class Profile extends Component {
         return <UserForm {...this.props.user}/> 
         } else {
            return (<div>
-            <h3>Username: {this.props.user.username}</h3>
-            <h3>{this.props.user.email}</h3>
+            <h3>Hello {this.props.user.username}!</h3>
+            <h3>Your email: {this.props.user.email}</h3>
             <h3>Tasks created:{this.props.userCreatedJobs.length}</h3>
             <h3>Tasks booked:{this.props.userHelpingJobs.length}</h3>
             {/* implement photo upload */}
-            <button>
-              <Link className="wordLink" to="/instructions">
+            <button className="ButtonPinkCenter" >YOUR CREATED TASKS</button>
+            <button className="ButtonPinkCenter"onClick={this.toggleEdit}>EDIT YOUR DETAILS</button>
+            <button className="ButtonPinkCenter">
+              <Link id="noUnderlineLink" to="/instructions">
                 INSTRUCTIONS
               </Link>
             </button>
-            <button onClick={this.toggleEdit}>EDIT YOUR DETAILS</button>
+
             <div>
-              <button onClick={this.props.logOut}>LOG OUT</button>
+              <button  className="ButtonPinkCenter"onClick={this.props.logOut}>LOG OUT</button>
             </div>
+
+            
+            
+            
             </div>)
+
+
         }
     }
 

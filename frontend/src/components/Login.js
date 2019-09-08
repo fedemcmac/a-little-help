@@ -10,20 +10,18 @@ const Login = ({ handleSubmit }) => {
         <div>
             <form onSubmit={e => {
             e.preventDefault();
-            // turnAuthOff();
             handleSubmit({ email, password });
             setEmail('')
             setPassword('')
-        }}>
-                
+        }}>                
                 <input placeholder="Email" type="email" name="email" value={email} onChange={e => setEmail(e.target.value)} /><br />
                 
-                <input placeholder="Password" type="password" name="password" value={password} onChange={e => setPassword(e.target.value)} /><br />
-                <input type="submit" value="LOGIN"/>
+                <input placeholder="Password" type="password" name="password" value={password} onChange={e => setPassword(e.target.value)} /><br /><br />
+                <input className="ButtonPinkCenter" type="submit" value="LOGIN"/>
             </form>
 
-            <p>Don't have an account?
-            <Link to="/welcome/signup"> Sign Up</Link>
+            <p className="toggleSignupLoginText" >Don't have an account?
+            <Link className="wordLink" to="/welcome/signup"> Sign Up</Link>
             </p>
         </div>
     )

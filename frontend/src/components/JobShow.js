@@ -24,7 +24,7 @@ class JobShow extends Component {
         <JobForm jobToEdit={job} submit={this.props.editJob} />
       ) : (
         <div>
-          <h2>Title: {job.title}</h2>
+          <h2 className="jobTitle">{job.title}</h2>
           <h3>Summary: {job.title}</h3>
           <h4>Category: {job.category}</h4>
           <h4>Description: </h4>
@@ -38,19 +38,19 @@ class JobShow extends Component {
   renderButtons = (job) => {
     if (job.owner.id === this.props.user.id) { return (
       <div>
-        <button onClick={() => this.setState({ edit: true })}>
+        <button className="ButtonPinkCenter" onClick={() => this.setState({ edit: true })}>
           EDIT TASK
         </button>
-        <button onClick={() => this.props.deleteJob(job.id)}>
+        <button className="ButtonPinkCenter" onClick={() => this.props.deleteJob(job.id)}>
           DELETE TASK
         </button>
       </div>
     )} else if ( this.props.user.helping_jobs_ids.includes(job.id)) { 
-      return (<button onClick={() => this.props.dropJob(job.id)}>
+      return (<button className="ButtonPinkCenter" onClick={() => this.props.dropJob(job.id)}>
         DROP TASK
       </button>
     ) } else { return (
-      <button onClick={() => this.props.acceptJob(job.id)}>
+      <button className="ButtonPinkCenter" onClick={() => this.props.acceptJob(job.id)}>
         ACCEPT TASK
       </button>
     )}

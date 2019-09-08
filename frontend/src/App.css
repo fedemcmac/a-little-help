@@ -33,25 +33,55 @@ body {
     -3px -4px 1px #d81a61, -4px -3px 1px #d81a61, -4px -5px 1px #d81a61,
     -5px -4px 1px #d81a61, -5px -6px 1px #d81a61, -6px -5px 1px #d81a61,
     -6px -7px 1px #d81a61, -7px -6px 1px #d81a61, -7px -8px 0px #d81a61,
-    -8px -7px 0px #d81a61;
+    -8px -7px 0px #d81a61, -9px -8px 1px #d81a61, -8px -9px 1px #d81a61,
+    -10px -9px 1px #d81a61, -9px -10px 1px #d81a61, -11px -10px 1px #d81a61,
+    -10px -11px 1px #d81a61;
   color: white;
 }
 
 .navbar {
+  display: flex;
+  flex-direction: row;
+  border-top: 0.5px solid #e3dede;
   overflow: hidden;
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: #01bcd6;
+  height: 4rem;
+  background-color: white;
 }
 
-.scrollable {
+.navbarItem {
+  margin-top: 0.75rem;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* .scrollable {
   overflow-y: scroll;
   height: auto;
+} */
+
+.toggleSignupLoginText {
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0.5px;
+  color: var(--dark);
 }
 
 .wordLink {
   text-decoration: none;
+  font-style: italic;
+  color: var(--dark);
+}
+
+#noUnderlineLink {
+  text-decoration: none;
+  color: white;
 }
 
 .blueHeader {
@@ -66,11 +96,11 @@ body {
   left: 0;
 } */
 
-button {
+/* button {
   width: 45%;
   height: 40px;
   background-color: #d81a61;
-}
+} */
 
 .blueBackground {
   position: relative;
@@ -82,6 +112,7 @@ button {
   border-radius: 5px;
   border-width: 0;
   margin: 5px;
+  /* margin-top: 5px; */
   font-family: Roboto;
   font-size: 14px;
   font-weight: 500;
@@ -91,6 +122,9 @@ button {
   letter-spacing: 1.25px;
   text-align: center;
   color: white;
+  width: 15rem;
+  height: 40px;
+  background-color: #d81a61;
 }
 
 .welcomeButtonContainer {
@@ -106,10 +140,77 @@ button {
 }
 
 .hands {
-  background-image: url("./heartHandsps1.png");
+  background-image: url("./images/heartHandsps1.png");
   position: center;
   background-size: contain;
   position: absolute;
   height: 100%;
   width: 100%;
+}
+
+input, textarea{
+  width: 328px;
+  height: 40px;
+  border-radius: 5px;
+  border: solid 1px #e0dada;
+  background-color: white;
+  margin-bottom: 0.5rem;
+}
+
+.jobTitle {
+  font-family: Phosphate-Solid;
+  font-size: 35px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 1.25px;
+  color: #d81a61
+}
+
+.plainText {
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 750;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0.5px;
+  color: var(--dark);
+}
+
+.flexJobsCardsContainer {
+  flex-direction: column;
+}
+
+.flexJobCard {
+  /* flex-direction: column; */
+  align-self: center;
+  border: 2px;
+  border: 0.5px solid #e3dede;
+  margin: 5%;
+  border-radius: 10px;
+  background-color: #f5f3f3;
+}
+
+.newLink {
+  background-image: url("./images/new.png");
+}
+
+select {
+  border-radius: 5px;
+  /* border-width: 0; */
+  margin: 5px;
+  /* margin-top: 5px; */
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 1.25px;
+  text-align: center;
+  color: white;
+  width: 15rem;
+  height: 40px;
+  background-color: #d81a61;
 }

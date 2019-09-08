@@ -9,7 +9,7 @@ const MyJobsList = ({
   redirectToJobShowPage
 }) => {
   return (
-    <div className="scrollable">
+    <div className="flexJobsCardsContainer">
       <h3>Accepted tasks:</h3>
       {userHelpingJobs.length === 0
         ? "You haven't volunteered for any tasks yet"

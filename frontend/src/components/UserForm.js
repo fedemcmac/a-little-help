@@ -40,8 +40,8 @@ class UserForm extends Component {
                 onChange={e => this.updateState(e)}
             />
             <br />
-          <button value="Create Job">SUBMIT</button></form>
-          <button onClick={() => {console.log("delete")}}>DELETE ACCOUNT</button>
+          <button className="ButtonPinkCenter" value="Create Job">SUBMIT</button></form>
+          <button className="ButtonPinkCenter" onClick={() => {console.log("delete")}}>DELETE ACCOUNT</button>
       </div>
     );
   }
