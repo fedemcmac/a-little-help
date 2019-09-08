@@ -10,14 +10,14 @@ import JobShow from "./JobShow";
 
 class MembersArea extends Component {
   redirectToJobShowPage = id => {
-    console.log(id);
+    console.log('called redirect')
     this.props.history.replace({ pathname: "/task/" + id });
   };
 
-  componentDidMount() {
-    console.log('members area')
-    this.props.fetchOthersJobs();
-  }
+  // componentDidMount() {
+  //   console.log('members area')
+  //   this.props.fetchJobs();
+  // }
 
   render() {
     return (

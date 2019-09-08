@@ -10,7 +10,6 @@ class JobShow extends Component {
   };
 
   componentDidMount() {
-    // debugger;
     const jobId = this.props.match.params.id;
     console.log(jobId)
     API.showJob(jobId).then(job => {

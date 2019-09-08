@@ -1,14 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
-// import Authentication from "./components/Authentication";
 import API from "./adapters/API";
-// import JobForm from "./components/JobForm";
-import Welcome from "./components/Welcome";
-// import Signup from "./components/Signup";
-// import Login from "./components/Login";
-import { withRouter, Route } from "react-router-dom";
+import Welcome from "./components/Welcome";import { withRouter, Route } from "react-router-dom";
 import MembersArea from "./components/MembersArea";
-// import PrivateRoute from "./components/PrivateRoute"
 
 class App extends Component {
   state = {
@@ -23,20 +17,18 @@ class App extends Component {
       } else {
         this.props.history.push("/welcome");
       }
-    }).then(this.fetchOthersJobs()
-    );
+    }).then(() => this.fetchJobs())
   }
 
-  fetchOthersJobs = () => {
-    console.log('fetching')
+  fetchJobs = () => {
     return API.getJobs().then(data => this.setState({ jobs: data }));
   };
 
-  userCreatedJobs = () => {  // WORKS
+  userCreatedJobs = () => {
     return this.state.jobs.filter(job => job.owner.id === this.state.user.id)
   };
 
-  userHelpingJobs = () => {  // WORKS
+  userHelpingJobs = () => {
     return this.state.user.helping_jobs_ids.map(helpingJobId => {
       return this.state.jobs.find(job => {
         return job.id === helpingJobId;
@@ -45,37 +37,29 @@ class App extends Component {
   };
 
   availableJobs = () => {
-    // debugger
     const helping_jobs = this.userHelpingJobs()
     const created_jobs = this.userCreatedJobs()
     return this.state.jobs.filter(job => {
       return !helping_jobs.includes(job) && !created_jobs.includes(job)
     })
-
-    // return this.state.user.helping_jobs_ids.map(helpingJobId => {
-    //   return this.state.jobs.find(job => {
-    //     return job.id !== helpingJobId;
-    //   });
-    // });
-
-    // return this.state.jobs.filter(job => {///////////////////////////////////////////////////////
-    //   return job.owner.id !== this.state.user.id}).filter(notUserJob => {
-    //   return !this.state.user.helping_jobs_ids.includes(notUserJob.id)
-    //   })
   };
 
   signUp = user => {
     API.signUp(user)
       .then(data => this.setState({ user: data }))
+      .then(this.fetchJobs())
       .then(this.props.history.push("/dashboard"));
     this.props.history.push("/instructions");
   };
 
   logIn = user => {
     API.logIn(user)
-      .then(user => this.setState({ user: user }))
+      .then(user => {
+        console.log('setting user state')
+        this.setState({ user: user })
+      })
+      .then(() => this.fetchJobs())
       .then(this.props.history.push("/dashboard"));
-    // .then(API.getJobs().then(data => this.setState({ jobs: data })))
   };
 
   logOut = () => {
@@ -101,7 +85,7 @@ class App extends Component {
   findHelpingJob = id => {
     return this.state.user.helping_jobs.find(job => job.id === id);
   };
-
+////////////////////////////////
   dropJob = id => {
     API.dropJob(id).then(
       this.setState({
@@ -160,14 +144,13 @@ class App extends Component {
             render={routerProps => (
               <MembersArea
                 {...routerProps}
-                fetchOthersJobs={this.fetchOthersJobs}
+                fetchJobs={this.fetchJobs}
                 userCreatedJobs={this.userCreatedJobs()}
                 userHelpingJobs={this.userHelpingJobs()}
                 availableJobs={this.availableJobs()}
                 submitJob={this.submitJob}
                 logOut={this.logOut}
                 user={this.state.user}
-                // jobs={this.state.jobs}
                 acceptJob={this.acceptJob}
                 dropJob={this.dropJob}
                 editJob={this.editJob}
