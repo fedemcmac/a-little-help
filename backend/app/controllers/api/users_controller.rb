@@ -4,13 +4,12 @@ class Api::UsersController < ApplicationController
      
     def index
         users = User.all
-        render json: users
+        render json: users, each_serializer: FullUserSerializer
     end
 
     def create
         user = User.create(user_params)
         if user.valid?
-            # render json: { user: UserSerializer.new(user), token: user.token }, status: :created
             render json: { user: FullUserSerializer.new(user), token: encode_token({user_id: user.id}) }, status: :created
         else
             render json: { errors: user.errors.full_messages }, status: :not_accepted
@@ -25,23 +24,14 @@ class Api::UsersController < ApplicationController
     def drop_job
         user_job = UserJob.find_by(job_id: params[:job_id], user_id: @current_user.id )
         user_job.destroy
-        
-
-        # render json: { job: JobSerializer.new(job) }
-
-        # @cocktail.destroy
-
-    #     user_job = UserJob.create(job_id: params[:job_id], user_id: @current_user.id )
-    #     render json: { user: FullUserSerializer.new(@current_user) }
     end
 
     def update
         user = User.find(params[:id])
         user.update(user_params)
         if user.valid?
-            render json: user
+            render json: { user: FullUserSerializer.new(user) }
         else 
-            ############################################### not doing anything?????
             render json: { errors: user.errors.full_messages }
         end
     end

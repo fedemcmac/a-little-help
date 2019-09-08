@@ -2,23 +2,24 @@ const endpoint = "http://localhost:3000/api";
 const signupUrl = `${endpoint}/users`;
 const loginUrl = `${endpoint}/login`;
 const jobsUrl = `${endpoint}/jobs`;
-const filteredJobsUrl = `${endpoint}/browse_jobs`;
 const validateUrl = `${endpoint}/validate`;
 const dropJobUrl = `${endpoint}/drop_job`;
 const acceptJobUrl = `${endpoint}/accept_job`;
 
 const jsonify = res => {
+  console.log('jsonify')
   if (res.ok) return res.json();
   else throw res.json();
 };
 
 const handleServerError = response => {
-  // console.error(response)
   throw response;
 };
 
 const saveToken = data => {
+  console.log('saving token')
   localStorage.setItem("token", data.token);
+  console.log(data.user)
   return data.user;
 };
 
@@ -39,7 +40,7 @@ const signUp = user =>
     .then(saveToken)
     .catch(handleServerError);
 
-const logIn = user =>
+const logIn = user => 
   fetch(loginUrl, {
     method: "POST",
     headers: {
@@ -76,12 +77,13 @@ const postJob = job =>
     .catch(handleServerError);
 
 const getJobs = () =>
-  fetch(filteredJobsUrl, {
+  fetch(jobsUrl, {
     headers: constructHeaders({
       "Content-Type": "application/json",
       Accept: "application/json"
     })
-  }).then(jsonify);
+  }).then(jsonify)
+  
 
 const clearToken = () => localStorage.removeItem("token");
 
@@ -104,8 +106,6 @@ const deleteJob = id =>
     })
   });
 
-// delete '/drop_task', to: 'users#drop_task'
-
 const acceptJob = id =>
   fetch(acceptJobUrl, {
     method: "POST",
@@ -123,7 +123,6 @@ const showJob = id => {
 };
 
 const editJob = job => {
-  // console.log(`edit this job ${job.id}`);
   return fetch(jobsUrl + `/${job.id}`, {
     method: "PATCH",
     body: JSON.stringify({ job: job }),
