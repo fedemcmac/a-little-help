@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import API from "../adapters/API";
 import JobForm from "./JobForm";
 
 class JobShow extends Component {
@@ -17,17 +16,15 @@ class JobShow extends Component {
   }
 
   renderJob = job => {
-    
-    console.log(this.state.selectedJob)
     if (job !== null) {
       return this.state.edit ? (
         <JobForm jobToEdit={job} submit={this.props.editJob} />
       ) : (
-        <div>
-          <h2 className="jobTitle">{job.title}</h2>
+        <div className="coveredByHeader">
+          <h2 className="bigAndPink">{job.title}</h2>
           <h3>Summary: {job.title}</h3>
           <h4>Category: {job.category}</h4>
-          <h4>Description: </h4>
+          {/* <h4>Description: </h4> */}
           <p>{job.description}</p>
           {this.renderButtons(job)}
         </div>

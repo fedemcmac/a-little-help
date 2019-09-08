@@ -35,8 +35,8 @@ class JobForm extends Component {
 
   render() {
     return (
-      <div>
-        {/* <Header title="Create new task"/> */}
+      <div className="fixed">
+        <Header title={this.props.jobToEdit ? "Edit task" : "Create new task"}/><br/>
         <form
           onSubmit={e => {
             e.preventDefault();
@@ -85,7 +85,7 @@ class JobForm extends Component {
           </select>
           <br /><br />
           <label className="plainText"> Describe the help you need here: </label>
-          <textarea 
+          <textarea className="textArea"
             name="description"
             value={this.state.description}
             onChange={e => this.updateState(e)}

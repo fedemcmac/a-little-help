@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Header from "./Header";
 
 class UserForm extends Component {
 
@@ -13,8 +14,9 @@ class UserForm extends Component {
 
   render() {
     return (
-      <div>
-        <form
+      <div className="fixed">
+      <Header title="Edit details" />
+        <form 
             onSubmit={e => {
                 e.preventDefault();
                 this.props.submit({ ...this.state });
@@ -23,7 +25,6 @@ class UserForm extends Component {
                 email: ""
                 });
             }}>
-            <label>Username:</label>
             <input
                 placeholder="Username"
                 type="text"
@@ -31,7 +32,6 @@ class UserForm extends Component {
                 value={this.state.username}
                 onChange={e => this.updateState(e)}
             /><br />
-            <label>Email:</label>
             <input
                 placeholder="Email"
                 type="text"

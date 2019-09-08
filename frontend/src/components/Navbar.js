@@ -6,27 +6,27 @@ class Navbar extends Component {
     return (
       <div className="navbar">
         <div className="navbarItem">
-          <Link className="wordLink" to="/dashboard">
-            <i class="fas fa-home"></i> <br />
+          <Link className="navLink" to="/dashboard">
+            <i className="fas fa-home"></i> <br />
             Profile
           </Link>
         </div>
 
         <div className="navbarItem">
-          <Link className="wordLink" to="/browse-tasks">
-            <i class="fas fa-search"></i>  <br />Find Tasks
+          <Link className="navLink" to="/browse-tasks">
+            <i className="fas fa-search"></i>  <br />Find Tasks
           </Link>
         </div>
 
         <div className="navbarItem">
-          <Link className="wordLink" to="/my-tasks">
-            <i class="fas fa-tasks"></i> <br /> My Tasks{" "}            
+          <Link className="navLink" to="/my-tasks">
+            <i className="fas fa-tasks"></i> <br /> My Tasks{" "}            
           </Link>
         </div>
 
         <div className="navbarItem">
-          <Link className="wordLink" to="/create-task">
-            <i class="far fa-calendar-plus"></i> <br /> New Task            
+          <Link className="navLink" to="/create-task">
+            <i className="far fa-calendar-plus"></i><br /> New Task            
           </Link>
         </div>
       </div>
