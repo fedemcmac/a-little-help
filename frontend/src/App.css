@@ -383,7 +383,7 @@ select {
   line-height: normal;
   letter-spacing: 0.5px;
   color: #2c363f;
-  /* vertical-align: middle;   */
+  margin: 0;
 }
 
 .bottomLinkContainer {

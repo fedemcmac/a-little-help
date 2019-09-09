@@ -3,14 +3,14 @@ import Header from "./Header";
 import { Link } from "react-router-dom";
 
 class Instructions extends Component {
+
   pageNumber = () => {
-    if (this.props.nextPath === 1) console.log(3 / 4);
-    if (this.props.nextPath === 2) console.log(1 / 4);
-    if (this.props.nextPath === 3) console.log(2 / 4);
+    if (this.props.nextPath === "/instructions/1") return("3 / 3");
+    if (this.props.nextPath === "/instructions/2") return("1 / 3");
+    if (this.props.nextPath === "/instructions/3") return("2 / 3");
   };
 
   render() {
-      this.pageNumber()
     return (
       <div className="fixed">
         <Header title="Instructions" />
@@ -38,7 +38,8 @@ class Instructions extends Component {
             </Link>
             <p className="pagination">
               {" "}
-              ciao
+              
+              
               {this.pageNumber()}
             </p>
             <Link className="bottomRightLink" to={this.props.nextPath}>
