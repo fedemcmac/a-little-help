@@ -155,7 +155,7 @@ body {
   width: 75%;
 }
 
-.instructionsImageContainer img .five{
+.instructionsImageContainer img .five {
   /* padding-top: 2rem; */
   object-fit: inherit;
   height: 100%;
@@ -163,25 +163,25 @@ body {
 }
 
 /* .map { */
-  /* background-image: url("./images/map.png"); */
-  /* background-size: inherit; */
-  /* position: center; */
-  /* position: absolute; */
-  /* height: 100%; */
-  /* width: 40rem; */
-  /* margin-left: 2rem; */
-  /* margin-bottom: 2rem;
+/* background-image: url("./images/map.png"); */
+/* background-size: inherit; */
+/* position: center; */
+/* position: absolute; */
+/* height: 100%; */
+/* width: 40rem; */
+/* margin-left: 2rem; */
+/* margin-bottom: 2rem;
 }
 
 .phone {
   /* background-image: url("./images/phone.png"); */
-  /* background-size: cover;
+/* background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   position: absolute;
   height: 100%;
   width: 100%; */
-  /* margin-left: 0.8rem; */
+/* margin-left: 0.8rem; */
 /* } */
 
 .five {
@@ -339,7 +339,6 @@ select {
   color: #2c363f;
 }
 
-
 .selected {
   text-decoration: none;
   color: #01bcd6;
@@ -349,7 +348,6 @@ select {
 /* #selected {
   
 } */
-
 
 .textArea {
   height: 10rem;
@@ -447,10 +445,6 @@ select {
   position: relative;
 }
 
-.middleDiv {
-
-}
-
 .fa-sort-down {
   /* margin-right: 7rem; */
   /* width: 100%;
@@ -461,4 +455,9 @@ select {
   right: 0;
   margin-top: 0.8rem;
   margin-right: 6rem;
+}
+
+.mapContainer {
+  position: relative;
+  text-align: center;
 }

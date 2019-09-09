@@ -12,15 +12,14 @@ class App extends Component {
   };
 
   componentDidMount() {
-    API.validateUser()
-      .then(user => {
-        if (!user.error) {
-          this.setState({ user: user });
-          this.fetchJobs()
-        } else {
-          this.props.history.push("/welcome");
-        }
-      })
+    API.validateUser().then(user => {
+      if (!user.error) {
+        this.setState({ user: user });
+        this.fetchJobs();
+      } else {
+        this.props.history.push("/welcome");
+      }
+    });
   }
 
   fetchJobs = () => {
@@ -70,11 +69,14 @@ class App extends Component {
   };
 
   submitJob = job => {
-    API.postJob(job).then(data =>
-      this.setState({
-        jobs: [...this.state.jobs, data.job]
+    API.postJob(job)
+      .then(data => {
+        this.setState({
+          jobs: [...this.state.jobs, data.job]
+        });
+        return data;
       })
-    );
+      .then(data => this.props.history.push(`/task/${data.job.id}`));
   };
 
   dropJob = id => {
@@ -102,15 +104,18 @@ class App extends Component {
   };
 
   editJob = job => {
-    API.editJob(job).then(data =>
+    return API.editJob(job).then(data => {
       this.setState({
         jobs: [
           ...this.state.jobs.filter(job => job.id !== data.job.id),
           data.job
         ]
-      })
-    );
-    this.props.history.push("/my-tasks");
+      });
+      return data;
+    }).then(data => {
+      this.props.history.push(`/task/${data.job.id}`)
+      return data
+    });
   };
 
   deleteJob = id => {

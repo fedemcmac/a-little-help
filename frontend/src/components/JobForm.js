@@ -36,7 +36,9 @@ class JobForm extends Component {
         <form
           onSubmit={e => {
             e.preventDefault();
-            this.props.submit({ ...this.state });
+            this.props
+              .submit({ ...this.state })
+              .then(data => this.props.turnEditOff(data));
             this.setState({
               title: "",
               summary: "",
@@ -87,7 +89,6 @@ class JobForm extends Component {
               <option value="Children">Children</option>
               <option value="Other">Other</option>
             </select>
-
           </div>
 
           <br />
