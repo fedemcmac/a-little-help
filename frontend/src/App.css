@@ -238,6 +238,18 @@ padding: 2px;
   margin-top: 1.8rem;
 }
 
+.bigAndPinkJobCardTitle {
+  font-family: Phosphate-Solid;
+  font-size: 30px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 1.25px;
+  color: #d81a61;
+  margin-top: 0.6rem;
+}
+
 #instructionsWelcomeTo {
   font-family: Phosphate-Solid;
   font-size: 30px;
@@ -313,16 +325,31 @@ select {
   line-height: normal;
   letter-spacing: 1.25px;
   text-align: center;
-  color: white;
+  color: #2c363f;
+  padding-left: 0.5rem;
+  border: solid 1px #e0dada;
+  background-color: white;
+
   width: 15rem;
   height: 40px;
-  background-color: #d81a61;
 }
 
 .navLink {
   text-decoration: none;
   color: #2c363f;
 }
+
+
+.selected {
+  text-decoration: none;
+  color: #01bcd6;
+  /* color: #d81a61 */
+}
+
+/* #selected {
+  
+} */
+
 
 .textArea {
   height: 10rem;
@@ -374,7 +401,6 @@ select {
   padding-left: 10%;
 }
 
-
 .pagination {
   font-family: Roboto;
   font-size: 14px;
@@ -409,4 +435,30 @@ select {
   display: flex;
   flex-direction: column;
   margin-bottom: 4rem;
+}
+
+.topMargin {
+  margin-top: 0.5rem;
+}
+
+.arrowContainer {
+  /* width: 100px;
+  height: 100px; */
+  position: relative;
+}
+
+.middleDiv {
+
+}
+
+.fa-sort-down {
+  /* margin-right: 7rem; */
+  /* width: 100%;
+  height: 100%; */
+  padding: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 0.8rem;
+  margin-right: 6rem;
 }
