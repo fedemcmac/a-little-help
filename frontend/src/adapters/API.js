@@ -7,7 +7,6 @@ const dropJobUrl = `${endpoint}/drop_job`;
 const acceptJobUrl = `${endpoint}/accept_job`;
 
 const jsonify = res => {
-  console.log('jsonify')
   if (res.ok) return res.json();
   else throw res.json();
 };
@@ -17,9 +16,7 @@ const handleServerError = response => {
 };
 
 const saveToken = data => {
-  console.log('saving token')
   localStorage.setItem("token", data.token);
-  console.log(data.user)
   return data.user;
 };
 

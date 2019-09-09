@@ -1,13 +1,8 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import Header from "./Header";
-import UserForm from "./UserForm";
 
 class JobForm extends Component {
-  // const [title, setTitle] = useState('')
-  // const [summary, setSummary] = useState('')
-  // const [category, setCategory] = useState('Other')
-  // const [description, setDescription] = useState('')
-
+  
   state = {
     title: "",
     summary: "",
@@ -29,14 +24,13 @@ class JobForm extends Component {
         description: this.props.jobToEdit.description,
         id: this.props.jobToEdit.id
       });
-      console.log(this.props.jobToEdit);
     }
   }
 
   render() {
     return (
-      <div>
-        {/* <Header title="Create new task"/> */}
+      <div className="fixed">
+        <Header title={this.props.jobToEdit ? "Edit task" : "Create new task"}/><br/>
         <form
           onSubmit={e => {
             e.preventDefault();
@@ -50,7 +44,6 @@ class JobForm extends Component {
             });
           }}
         >
-          <label>Title:</label>
           <input
             placeholder="Title"
             type="text"
@@ -59,25 +52,23 @@ class JobForm extends Component {
             onChange={e => this.updateState(e)}
           />
           <br />
-          <label>Summary:</label>
           <input
-            placeholder="Summary"
+            placeholder="Short description"
             type="text"
             name="summary"
             value={this.state.summary}
             onChange={e => this.updateState(e)}
           />
           <br />
-          <label>Category:</label>
-          <select
-            placeholder="Email"
-            type="email"
+          <label className="plainText">Category:</label>
+          <select 
             name="category"
             value={this.state.category}
             onChange={e => this.updateState(e)}
           >
+            <option value="N/A">N/A</option>
             <option value="Remote">Remote</option>
-            <option value="Other">Misc</option>
+            <option value="Misc">Misc</option>
             <option value="Physically demanding">Physically demanding</option>
             <option value="Outdoor">Outdoor</option>
             <option value="Indoor">Indoor</option>
@@ -86,15 +77,15 @@ class JobForm extends Component {
             <option value="Children">Children</option>
             <option value="Other">Other</option>
           </select>
-          <br />
-          <label>Description:</label>
-          <textarea
+          <br /><br />
+          <label className="plainText"> Describe the help you need here: </label>
+          <textarea className="textArea"
             name="description"
             value={this.state.description}
             onChange={e => this.updateState(e)}
           />
           <br />
-          <button>{this.props.jobToEdit ? "EDIT TASK" : "CREATE TASK"}</button>
+          <button className="ButtonPinkCenter">{this.props.jobToEdit ? "EDIT TASK" : "CREATE TASK"}</button>
         </form>
       </div>
     );
