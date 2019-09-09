@@ -7,20 +7,66 @@ import MyJobsList from "./MyJobsList";
 import JobForm from "./JobForm";
 import Navbar from "./Navbar";
 import JobShow from "./JobShow";
+import CreatedJobs from "./CreatedJobs";
 
 class MembersArea extends Component {
-
   redirectToJobShowPage = id => {
-    console.log('called redirect')
     this.props.history.replace({ pathname: "/task/" + id });
   };
 
   render() {
     return (
       <div>
-        <Navbar />
+        <div className="top_level_navbar" id="top_level_navbar">
+          <Navbar />
+        </div>
+        <div className="top_level_contents">
         <Switch>
-          <Route path="/instructions" component={Instructions} />
+          <Route
+            path="/instructions/1"
+            component={() => (
+              <Instructions
+                header="A little help"
+                title="Share some love by micro-volunteering, help people in your neighborhood with small tasks!"
+                // subtitle=""
+                imgClass="map"
+                imgSrc={require("../images/map.png")}
+                imgAlt="map"
+                previousPath="/instructions/3"
+                nextPath="/instructions/2"
+              />
+            )}
+          />
+          <Route
+            path="/instructions/2"
+            component={() => (
+              <Instructions
+                header="It's easy!"
+                title="Find tasks you would like to help with, whenever and wherever you want"
+                // subtitle=""
+                imgClass="phone"
+                imgSrc={require("../images/phone.png")}
+                imgAlt="phone"
+                previousPath="/instructions/1"
+                nextPath="/instructions/3"
+              />
+            )}
+          />
+          <Route
+            path="/instructions/3"
+            component={() => (
+              <Instructions
+                header="Thank you"
+                title="No better exercise for the heart than reaching down and lifting people up."
+                // subtitle=""
+                imgClass="five"
+                imgSrc={require("../images/five.png")}
+                imgAlt="five"
+                previousPath="/instructions/2"
+                nextPath="/instructions/1"
+              />
+            )}
+          />
           <Route
             path="/dashboard"
             component={() => (
@@ -43,10 +89,19 @@ class MembersArea extends Component {
             )}
           />
           <Route
+            path="/created-tasks"
+            render={() => (
+              <CreatedJobs
+                userCreatedJobs={this.props.userCreatedJobs}
+                findJob={this.props.findJob}
+                redirectToJobShowPage={this.redirectToJobShowPage}
+              />
+            )}
+          />
+          <Route
             path="/my-tasks"
             render={() => (
               <MyJobsList
-                userCreatedJobs={this.props.userCreatedJobs}
                 userHelpingJobs={this.props.userHelpingJobs}
                 dropJob={this.props.dropJob}
                 deleteJob={this.props.deleteJob}
@@ -72,6 +127,7 @@ class MembersArea extends Component {
             )}
           />
         </Switch>
+        </div>
       </div>
     );
   }

@@ -21,15 +21,15 @@ class Profile extends Component {
           <h3>Tasks created:{this.props.userCreatedJobs.length}</h3>
           <h3>Tasks booked:{this.props.userHelpingJobs.length}</h3>
           {/* implement photo upload */}
-          <button className="ButtonPinkCenter">YOUR CREATED TASKS</button>
+          <Link className="noUnderlineLink" to="/created-tasks">
+            <button className="ButtonPinkCenter">YOUR CREATED TASKS</button>
+          </Link>
           <button className="ButtonPinkCenter" onClick={this.toggleEdit}>
             EDIT YOUR DETAILS
           </button>
-          <button className="ButtonPinkCenter">
-            <Link id="noUnderlineLink" to="/instructions">
-              INSTRUCTIONS
-            </Link>
-          </button>
+          <Link className="noUnderlineLink" to="/instructions/1">
+            <button className="ButtonPinkCenter">INSTRUCTIONS</button>
+          </Link>
 
           <div>
             <button className="ButtonPinkCenter" onClick={this.props.logOut}>

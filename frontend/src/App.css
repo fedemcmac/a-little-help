@@ -16,6 +16,7 @@ body {
   text-align: center;
   font-family: "Roboto", sans-serif;
   height: 100%;
+  color: #2c363f;
 }
 
 .mainTitle {
@@ -43,12 +44,13 @@ body {
   display: flex;
   flex-direction: row;
   border-top: 0.5px solid #e3dede;
-  overflow: hidden;
+  /* overflow: hidden; */
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 4rem;
+  height: 3.5rem;
   background-color: #f5f5f5;
+  z-index: 99;
 }
 
 .navbarItem {
@@ -65,16 +67,16 @@ body {
   font-stretch: normal;
   line-height: normal;
   letter-spacing: 0.5px;
-  color: var(--dark);
+  color: #2c363f;
 }
 
 .wordLink {
   text-decoration: none;
   font-style: italic;
-  color: var(--dark);
+  color: #2c363f;
 }
 
-#noUnderlineLink {
+.noUnderlineLink {
   text-decoration: none;
   color: white;
 }
@@ -134,8 +136,67 @@ body {
   width: 100%;
 }
 
+.instructionsImageContainer {
+  margin-bottom: 50rem;
+  /* position: relative; */
+}
+
+.instructionsImageContainer .map {
+  padding-top: 2rem;
+  object-fit: inherit;
+  height: 75%;
+  width: 75%;
+}
+
+.instructionsImageContainer .phone {
+  padding-top: 2rem;
+  object-fit: inherit;
+  height: 75%;
+  width: 75%;
+}
+
+.instructionsImageContainer img .five{
+  /* padding-top: 2rem; */
+  object-fit: inherit;
+  height: 100%;
+  width: 14rem;
+}
+
+/* .map { */
+  /* background-image: url("./images/map.png"); */
+  /* background-size: inherit; */
+  /* position: center; */
+  /* position: absolute; */
+  /* height: 100%; */
+  /* width: 40rem; */
+  /* margin-left: 2rem; */
+  /* margin-bottom: 2rem;
+}
+
+.phone {
+  /* background-image: url("./images/phone.png"); */
+  /* background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  height: 100%;
+  width: 100%; */
+  /* margin-left: 0.8rem; */
+/* } */
+
+.five {
+  /* background-image: url("./images/five.png"); */
+  /* position: center; */
+  /* background-size: inherit; */
+  /* position: absolute; */
+  /* height: 30rem;
+  width: 0; */
+  /* padding-bottom: 7rem; */
+}
+
 input,
 textarea {
+  padding-left: 8px;
   width: 328px;
   height: 40px;
   border-radius: 5px;
@@ -143,6 +204,15 @@ textarea {
   background-color: white;
   margin-bottom: 0.5rem;
 }
+/* 
+padding: 2px;
+    padding-left: 5px;
+    width: 328px;
+    height: 40px;
+    border-radius: 5px;
+    border: solid 1px #e0dada;
+    background-color: white;
+    margin-bottom: 0.5rem; */
 
 .bigAndPink {
   font-family: Phosphate-Solid;
@@ -153,6 +223,45 @@ textarea {
   line-height: normal;
   letter-spacing: 1.25px;
   color: #d81a61;
+  margin-top: 0;
+}
+
+.bigAndPinkAndAwayFromHeader {
+  font-family: Phosphate-Solid;
+  font-size: 30px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 1.25px;
+  color: #d81a61;
+  margin-top: 1.8rem;
+}
+
+#instructionsWelcomeTo {
+  font-family: Phosphate-Solid;
+  font-size: 30px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 1.25px;
+  color: #d81a61;
+  margin-top: 2rem;
+  margin-bottom: 0;
+}
+
+#instructionsLoneTitle {
+  font-family: Phosphate-Solid;
+  font-size: 30px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 1.25px;
+  color: #d81a61;
+  margin-top: 2rem;
+  margin-bottom: 0;
 }
 
 .bigAndWhite {
@@ -174,7 +283,7 @@ textarea {
   font-stretch: normal;
   line-height: normal;
   letter-spacing: 0.5px;
-  color: var(--dark);
+  color: #2c363f;
 }
 
 .flexJobsCardsContainer {
@@ -189,10 +298,6 @@ textarea {
   margin: 5%;
   border-radius: 10px;
   background-color: #f5f5f5;
-}
-
-.newLink {
-  background-image: url("./images/new.png");
 }
 
 select {
@@ -216,7 +321,7 @@ select {
 
 .navLink {
   text-decoration: none;
-  color: var(--dark);
+  color: #2c363f;
 }
 
 .textArea {
@@ -233,5 +338,75 @@ select {
   overflow-y: scroll;
   height: auto;
   margin-top: 4.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.instructionsText {
+  margin-left: 3rem;
+  margin-right: 3rem;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 750;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0.5px;
+  color: #2c363f;
+}
+
+.bottomRightLink {
+  /* position: absolute; */
+  text-decoration: none;
+  font-style: italic;
+  color: #2c363f;
+  /* margin-right: 0;
+  display: inline-block;
+  float: right;  */
+  padding-right: 10%;
+}
+
+.bottomLeftLink {
+  /* position: fixed; */
+  text-decoration: none;
+  font-style: italic;
+  color: #2c363f;
+  /* margin-left: 0;
+  float: left;  */
+  padding-left: 10%;
+}
+
+
+.pagination {
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 750;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0.5px;
+  color: #2c363f;
+  /* vertical-align: middle;   */
+}
+
+.bottomLinkContainer {
+  margin-top: 30rem;
+  width: 100%;
+  display: flex;
+  position: fixed;
+  justify-content: space-between;
+  text-align: center;
+  vertical-align: middle;
+  /* display: relative; */
+  /* flex-direction: row; */
+  /* align-content: wrap;
+  position: absolute; */
+  /* margin-bottom: 3.5rem; */
+  /* display: inline-block; */
+  /* margin-right: 3.5rem; */
+  /* text-align: right; */
+  /* margin-bottom: 0; */
+}
+
+.grid-system {
+  display: flex;
+  flex-direction: column;
   margin-bottom: 4rem;
 }

@@ -51,13 +51,12 @@ class App extends Component {
     API.signUp(user)
       .then(data => this.setState({ user: data }))
       .then(() => this.fetchJobs())
-      .then(this.props.history.push("/instructions"));
+      .then(this.props.history.push("/instructions/1"));
   };
 
   logIn = user => {
     API.logIn(user)
       .then(user => {
-        console.log("setting user state");
         this.setState({ user: user });
       })
       .then(() => this.fetchJobs())

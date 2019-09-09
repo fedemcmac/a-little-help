@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import JobForm from "./JobForm";
+import Header from "./Header";
 
 class JobShow extends Component {
   state = {
@@ -10,7 +11,6 @@ class JobShow extends Component {
 
   componentDidMount() {
     const selectedJobId = this.props.match.params.id;
-    console.log(selectedJobId)
     const selectedJobObj = this.props.findJob(selectedJobId)
     this.setState({ selectedJob: selectedJobObj });
   }
@@ -20,11 +20,11 @@ class JobShow extends Component {
       return this.state.edit ? (
         <JobForm jobToEdit={job} submit={this.props.editJob} />
       ) : (
-        <div className="coveredByHeader">
+        <div className="scrollable">
+          <Header title={`Task #${job.id}`}/>
           <h2 className="bigAndPink">{job.title}</h2>
-          <h3>Summary: {job.title}</h3>
+          <h3>Summary: {job.summary}</h3>
           <h4>Category: {job.category}</h4>
-          {/* <h4>Description: </h4> */}
           <p>{job.description}</p>
           {this.renderButtons(job)}
         </div>

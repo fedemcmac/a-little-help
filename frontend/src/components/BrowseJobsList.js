@@ -10,17 +10,22 @@ const BrowseJobsList = ({
   return (
     <div className="scrollable">
       <Header title="Available tasks" />
-      <div className="flexJobsCardsContainer">
-        {/* <h3 className="bigAndWhite">AVAILABLE TASKS</h3> */}
-        {availableJobs.map(job => (
-          <JobCard
-            key={job.title}
-            job={job}
-            buttonText="ACCEPT TASK"
-            handleButtonClick={acceptJob}
-            handleJobClick={redirectToJobShowPage}
-          />
-        ))}
+      <div imageclass="flexJobsCardsContainer">
+        {availableJobs.length === 0 ? (
+          <p className="plainText">
+            There are no available tasks at the moment
+          </p>
+        ) : (
+          availableJobs.map(job => (
+            <JobCard
+              key={job.title}
+              job={job}
+              // buttonText="ACCEPT TASK"
+              // handleButtonClick={acceptJob}
+              handleJobClick={redirectToJobShowPage}
+            />
+          ))
+        )}
       </div>
     </div>
   );

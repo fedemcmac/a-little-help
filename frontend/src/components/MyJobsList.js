@@ -13,19 +13,18 @@ const MyJobsList = ({
     <div className="scrollable">
       <div className="flexJobsCardsContainer">
         <Header title="Accepted tasks" />
-        {/* <h3>Accepted tasks:</h3> */}
         {userHelpingJobs.length === 0
-          ? "You haven't volunteered for any tasks yet"
+          ? <p className="plainText">You haven't volunteered for any tasks yet</p>
           : userHelpingJobs.map(job => (
               <JobCard
                 key={job.id}
                 job={job}
-                handleButtonClick={dropJob}
-                buttonText="DROP TASK"
+                // handleButtonClick={dropJob}
+                // buttonText="DROP TASK"
                 handleJobClick={redirectToJobShowPage}
               />
             ))}
-
+{/* 
         <h3>Created tasks:</h3>
         {userCreatedJobs.length === 0
           ? "You haven't created any tasks yet"
@@ -33,11 +32,11 @@ const MyJobsList = ({
               <JobCard
                 key={job.id}
                 job={job}
-                handleButtonClick={deleteJob}
-                buttonText="DELETE TASK"
+                // handleButtonClick={deleteJob}
+                // buttonText="DELETE TASK"
                 handleJobClick={redirectToJobShowPage}
               />
-            ))}
+            ))} */}
       </div>
     </div>
   );

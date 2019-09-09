@@ -1,13 +1,8 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import Header from "./Header";
-import UserForm from "./UserForm";
 
 class JobForm extends Component {
-  // const [title, setTitle] = useState('')
-  // const [summary, setSummary] = useState('')
-  // const [category, setCategory] = useState('Other')
-  // const [description, setDescription] = useState('')
-
+  
   state = {
     title: "",
     summary: "",
@@ -29,7 +24,6 @@ class JobForm extends Component {
         description: this.props.jobToEdit.description,
         id: this.props.jobToEdit.id
       });
-      console.log(this.props.jobToEdit);
     }
   }
 
@@ -74,7 +68,7 @@ class JobForm extends Component {
           >
             <option value="N/A">N/A</option>
             <option value="Remote">Remote</option>
-            <option value="Other">Misc</option>
+            <option value="Misc">Misc</option>
             <option value="Physically demanding">Physically demanding</option>
             <option value="Outdoor">Outdoor</option>
             <option value="Indoor">Indoor</option>
