@@ -28,11 +28,10 @@ class MembersArea extends Component {
               <Instructions
                 header="A little help"
                 title="Share some love by micro-volunteering, help people in your neighborhood with small tasks!"
-                // subtitle=""
                 imgClass="map"
                 imgSrc={require("../images/map.png")}
                 imgAlt="map"
-                previousPath="/instructions/3"
+                previousPath="/dashboard"
                 nextPath="/instructions/2"
               />
             )}
@@ -43,7 +42,6 @@ class MembersArea extends Component {
               <Instructions
                 header="It's easy!"
                 title="Find tasks you would like to help with, whenever and wherever you want"
-                // subtitle=""
                 imgClass="phone"
                 imgSrc={require("../images/phone.png")}
                 imgAlt="phone"
@@ -58,12 +56,11 @@ class MembersArea extends Component {
               <Instructions
                 header="Thank you"
                 title="No better exercise for the heart than reaching down and lifting people up."
-                // subtitle=""
                 imgClass="five"
                 imgSrc={require("../images/five.png")}
                 imgAlt="five"
                 previousPath="/instructions/2"
-                nextPath="/instructions/1"
+                nextPath="/dashboard"
               />
             )}
           />

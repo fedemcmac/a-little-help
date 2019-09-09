@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import UserForm from "./UserForm";
 import Header from "./Header";
+import ProfileCard from "./ProfileCard";
 
 class Profile extends Component {
   state = { edit: false };
@@ -16,11 +17,11 @@ class Profile extends Component {
     } else {
       return (
         <div className="fixed">
-          <h3>Hello {this.props.user.username}!</h3>
-          <h3>Your email: {this.props.user.email}</h3>
-          <h3>Tasks created:{this.props.userCreatedJobs.length}</h3>
-          <h3>Tasks booked:{this.props.userHelpingJobs.length}</h3>
-          {/* implement photo upload */}
+          <ProfileCard
+            {...this.props.user}
+            userCreatedJobs={this.props.userCreatedJobs}
+            userHelpingJobs={this.props.userHelpingJobs}
+          />
           <Link className="noUnderlineLink" to="/created-tasks">
             <button className="ButtonPinkCenter">YOUR CREATED TASKS</button>
           </Link>
@@ -30,7 +31,6 @@ class Profile extends Component {
           <Link className="noUnderlineLink" to="/instructions/1">
             <button className="ButtonPinkCenter">INSTRUCTIONS</button>
           </Link>
-
           <div>
             <button className="ButtonPinkCenter" onClick={this.props.logOut}>
               LOG OUT

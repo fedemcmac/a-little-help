@@ -22,7 +22,7 @@ class JobShow extends Component {
       ) : (
         <div className="scrollable">
           <Header title={`Task #${job.id}`}/>
-          <h2 className="bigAndPink">{job.title}</h2>
+          <h2 className="bigAndPinkAndAwayFromHeader">{job.title}</h2>
           <h3>Summary: {job.summary}</h3>
           <h4>Category: {job.category}</h4>
           <p>{job.description}</p>
