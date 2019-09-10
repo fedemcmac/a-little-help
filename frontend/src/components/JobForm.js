@@ -93,13 +93,14 @@ class JobForm extends Component {
           />
           <br />
           <label className="plainText">Category:</label>
-          <div className="arrowContainer">
+          <div className="iconContainer">
             <i className="fas fa-sort-down"></i>
             <select
               name="category"
               value={this.state.category}
               onChange={e => this.updateState(e)}
             >
+              <option value="N/A">Choose a category</option>
               <option value="Other">Other</option>
               <option value="Remote">Remote</option>
               <option value="Misc">Misc</option>

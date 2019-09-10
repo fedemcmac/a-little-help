@@ -8,7 +8,8 @@ import MembersArea from "./components/MembersArea";
 class App extends Component {
   state = {
     user: undefined,
-    jobs: []
+    jobs: [],
+    searchTerm: ""
   };
 
   componentDidMount() {
@@ -152,6 +153,15 @@ class App extends Component {
     return this.state.jobs.find(job => job.id === parseInt(id));
   };
 
+  updateSearchTerm = (event) => {
+    this.setState({ searchTerm: event.target.value })
+    // this.searchJobs()
+  }
+
+  searchJobs = () => {
+    return this.state.jobs.filter(job => job.title.toLocaleLowerCase().includes(this.state.searchTerm.toLocaleLowerCase()))
+  } 
+
   render() {
     return (
       <div className="App">
@@ -173,6 +183,8 @@ class App extends Component {
                 editJob={this.editJob}
                 deleteJob={this.deleteJob}
                 findJob={this.findJob}
+                updateSearchTerm={this.updateSearchTerm}
+                searchTerm={this.state.searchTerm}
               />
             )}
           />
