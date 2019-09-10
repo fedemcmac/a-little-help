@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Header from "./Header";
+import LocationSearchInput from "./LocationSearchInput";
 
 class JobForm extends Component {
   state = {
@@ -7,12 +8,17 @@ class JobForm extends Component {
     summary: "",
     category: "",
     description: "",
+    address: "",
     id: null
   };
 
   updateState = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
+
+  updateAddressState = value => {
+    this.setState({ address: value })
+  }
 
   componentDidMount() {
     if (this.props.jobToEdit) {
@@ -28,7 +34,7 @@ class JobForm extends Component {
 
   render() {
     return (
-      <div className="fixed">
+      <div className="scrollable">
         <Header
           title={this.props.jobToEdit ? "Edit task" : "Create new task"}
         />
@@ -44,6 +50,7 @@ class JobForm extends Component {
               summary: "",
               category: "",
               description: "",
+              address: "",
               id: null
             });
           }}
@@ -103,6 +110,10 @@ class JobForm extends Component {
             onChange={e => this.updateState(e)}
           />
           <br />
+          <label className="plainText">
+            Location:
+          </label>
+          <LocationSearchInput handleChange={this.updateAddressState} addressState={this.state.address} />
           <button className="ButtonPinkCenter">
             {this.props.jobToEdit ? "EDIT TASK" : "CREATE TASK"}
           </button>
