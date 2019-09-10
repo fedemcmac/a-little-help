@@ -9,6 +9,8 @@ class JobForm extends Component {
     category: "",
     description: "",
     address: "",
+    lat: null,
+    lng: null,
     id: null
   };
 
@@ -18,6 +20,11 @@ class JobForm extends Component {
 
   updateAddressState = value => {
     this.setState({ address: value })
+  }
+
+  updateCoordinates = latLng => {
+    console.log(latLng)
+    this.setState({ lat: latLng.lat, lng: latLng.lng })
   }
 
   componentDidMount() {
@@ -51,6 +58,8 @@ class JobForm extends Component {
               category: "",
               description: "",
               address: "",
+              lat: null,
+              lng: null,
               id: null
             });
           }}
@@ -113,7 +122,7 @@ class JobForm extends Component {
           <label className="plainText">
             Location:
           </label>
-          <LocationSearchInput handleChange={this.updateAddressState} addressState={this.state.address} />
+          <LocationSearchInput handleChange={this.updateAddressState} addressState={this.state.address} updateCoordinates={this.updateCoordinates}/>
           <button className="ButtonPinkCenter">
             {this.props.jobToEdit ? "EDIT TASK" : "CREATE TASK"}
           </button>
