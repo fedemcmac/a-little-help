@@ -6,6 +6,7 @@ const JobCard = ({ job, handleButtonClick, buttonText, handleJobClick }) => {
       <div onClick={() => handleJobClick(job.id)}>
         <p className="bigAndPinkJobCardTitle">{job.title}</p>
         <p className="plainText">{job.summary}</p>
+        <p className="plainText">{job.address}</p>
       </div>
       {/* <div> */}
         {/* <button  className="ButtonPinkCenter"onClick={() => handleButtonClick(job.id)}>{buttonText}</button> */}

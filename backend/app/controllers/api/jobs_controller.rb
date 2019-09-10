@@ -41,7 +41,7 @@ class Api::JobsController < ApplicationController
     private
 
     def post_params
-        params.require(:job).permit(:user_id, :title, :summary, :category, :description)
+        params.require(:job).permit(:user_id, :title, :summary, :category, :description, :address, :lat, :lng)
     end
 
 end

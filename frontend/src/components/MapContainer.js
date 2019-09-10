@@ -21,9 +21,9 @@ class MapContainer extends Component {
           streetViewControl={false}
           fullscreenControl={false} 
           style={mapStyles}
-          initialCenter={{ lat: 0.444, lng: -122.176 }}
+          initialCenter={this.props.coordinates}
         >
-          <Marker position={{ lat: 0.444, lng: -122.176 }} />
+          <Marker position={this.props.coordinates} />
         </Map>
       </div>
     );
@@ -31,5 +31,5 @@ class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyDc5Sk2qRCnrAHrWPwDt25MxCs4KFDXLhw"//"AIzaSyDc5Sk2qRCnrAHrWPwDt25MxCs4KFDXLhw"//"AIzaSyD2iDkiYXWyIyOvOLacU_SmkjHDuUyIV2Q"//"AIzaSyCRTn94JYiK2X52xA6xft6U9kVgNonVCJk"
+  apiKey: "AIzaSyDc5Sk2qRCnrAHrWPwDt25MxCs4KFDXLhw"
 })(MapContainer);

@@ -20,6 +20,12 @@ class JobShow extends Component {
     this.setState({ edit: false, selectedJob: data.job });
   };
 
+  // turnEditOff = data => {
+  //   this.state.edit ?
+  //   this.setState({ edit: false, selectedJob: data.job }) :
+  //   this.setState({ selectedJob: data.job })
+  // };
+
   renderJob = job => {
     if (job !== null) {
       return this.state.edit ? (
@@ -32,9 +38,14 @@ class JobShow extends Component {
         <div className="scrollable">
           <Header title={`Task #${job.id}`} />
           <h2 className="bigAndPinkAndAwayFromHeader">{job.title}</h2>
-          <h3>Summary: {job.summary}</h3>
-          <h4>Category: {job.category}</h4>
+          <p>Summary: {job.summary}</p>
+          <p>Category: {job.category}</p>
+          <p>Address: {job.address}</p>
+          <p>Owner: {job.owner.username}</p>
           <p>{job.description}</p>
+          <p>
+            If you have any questions email: {job.owner.email}
+          </p>
           {this.renderButtons(job)}
         </div>
       );
@@ -84,7 +95,14 @@ class JobShow extends Component {
     return (
       <div>
         {this.renderJob(this.state.selectedJob)}
-        {this.state.edit === false ? <MapContainer /> : null}
+        {this.state.selectedJob && this.state.edit === false && this.state.selectedJob.lat && this.state.selectedJob.lng? (
+          <MapContainer
+            coordinates={{
+              lat: this.state.selectedJob.lat,
+              lng: this.state.selectedJob.lng
+            }}
+          />
+        ) : null}
       </div>
     );
   }
