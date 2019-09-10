@@ -155,7 +155,7 @@ body {
   width: 75%;
 }
 
-.instructionsImageContainer img .five{
+.instructionsImageContainer img .five {
   /* padding-top: 2rem; */
   object-fit: inherit;
   height: 100%;
@@ -163,25 +163,25 @@ body {
 }
 
 /* .map { */
-  /* background-image: url("./images/map.png"); */
-  /* background-size: inherit; */
-  /* position: center; */
-  /* position: absolute; */
-  /* height: 100%; */
-  /* width: 40rem; */
-  /* margin-left: 2rem; */
-  /* margin-bottom: 2rem;
+/* background-image: url("./images/map.png"); */
+/* background-size: inherit; */
+/* position: center; */
+/* position: absolute; */
+/* height: 100%; */
+/* width: 40rem; */
+/* margin-left: 2rem; */
+/* margin-bottom: 2rem;
 }
 
 .phone {
   /* background-image: url("./images/phone.png"); */
-  /* background-size: cover;
+/* background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   position: absolute;
   height: 100%;
   width: 100%; */
-  /* margin-left: 0.8rem; */
+/* margin-left: 0.8rem; */
 /* } */
 
 .five {
@@ -238,6 +238,10 @@ padding: 2px;
   margin-top: 1.8rem;
 }
 
+#msg {
+  margin-top: 25%;
+}
+
 .bigAndPinkJobCardTitle {
   font-family: Phosphate-Solid;
   font-size: 30px;
@@ -288,7 +292,7 @@ padding: 2px;
   color: white;
 }
 
-.plainText {
+.plainText ,p {
   font-family: Roboto;
   font-size: 14px;
   font-weight: 750;
@@ -339,7 +343,6 @@ select {
   color: #2c363f;
 }
 
-
 .selected {
   text-decoration: none;
   color: #01bcd6;
@@ -349,7 +352,6 @@ select {
 /* #selected {
   
 } */
-
 
 .textArea {
   height: 10rem;
@@ -447,10 +449,6 @@ select {
   position: relative;
 }
 
-.middleDiv {
-
-}
-
 .fa-sort-down {
   /* margin-right: 7rem; */
   /* width: 100%;
@@ -460,5 +458,20 @@ select {
   top: 0;
   right: 0;
   margin-top: 0.8rem;
-  margin-right: 6rem;
+  margin-right: 5rem;
+}
+
+.mapContainer {
+  position: relative;
+  text-align: center;
+}
+
+.location-search-input {
+  /* margin-top: 0rem;
+  position: absolute; */
+}
+
+.mapContainer {
+  /* position: relative;
+  padding-bottom: 7rem; */
 }

@@ -1,47 +1,84 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 class Navbar extends Component {
-
   state = {
-    selected: "Profile"
-  }
+    selected: "/dashboard"
+  };
 
-  changeSelected = (e) => {
-    console.log(e.target.innerText.trim())
-    this.setState({ selected: e.target.innerText.trim() })
-  }
+  // componentDidMount() {
+  //   // console.log(this.props.match.path)
+  // }
+
+  changeSelected = e => {
+    this.setState({ selected: e.target.innerText.trim() });
+  };
+
+  setStartingState = () => {
+    if (this.state.selected !== this.props.location.pathname) {
+      this.setState({ selected: this.props.location.pathname });
+    }
+  };
 
   render() {
     return (
-      <div className="navbar">
-        <div  className="navbarItem">
-          <Link onClick={this.changeSelected} className={this.state.selected === "Profile" ? "selected" : "navLink"} to="/dashboard">
-            <i className="fas fa-home"></i> <br />
-            Profile
-          </Link>
-        </div>
+      <>
+        {this.setStartingState()}
+        <div className="navbar">
+          <div className="navbarItem">
+            <Link
+              onClick={this.changeSelected}
+              className={
+                this.state.selected === "/dashboard" ? "selected" : "navLink"
+              }
+              to="/dashboard"
+            >
+              <i className="fas fa-home"></i> <br />
+              Profile
+            </Link>
+          </div>
 
-        <div  className="navbarItem">
-          <Link onClick={this.changeSelected} className={this.state.selected === "Find Tasks" ? "selected" : "navLink"} to="/browse-tasks">
-            <i className="fas fa-search"></i>  <br />Find Tasks
-          </Link>
-        </div>
+          <div className="navbarItem">
+            <Link
+              onClick={this.changeSelected}
+              className={
+                this.state.selected === "/browse-tasks" ? "selected" : "navLink"
+              }
+              to="/browse-tasks"
+            >
+              <i className="fas fa-search"></i> <br />
+              Find Tasks
+            </Link>
+          </div>
 
-        <div  className="navbarItem">
-          <Link onClick={this.changeSelected} className={this.state.selected === "My Tasks" ? "selected" : "navLink"} to="/my-tasks">
-            <i className="fas fa-tasks"></i> <br /> My Tasks{" "}            
-          </Link>
-        </div>
+          <div className="navbarItem">
+            <Link
+              onClick={this.changeSelected}
+              className={
+                this.state.selected === "/my-tasks" ? "selected" : "navLink"
+              }
+              to="/my-tasks"
+            >
+              <i className="fas fa-tasks"></i> <br /> My Tasks{" "}
+            </Link>
+          </div>
 
-        <div  className="navbarItem">
-          <Link onClick={this.changeSelected} className={this.state.selected === "New Task" ? "selected" : "navLink"} to="/create-task">
-            <i className="far fa-calendar-plus"></i><br /> New Task            
-          </Link>
+          <div className="navbarItem">
+            <Link
+              onClick={this.changeSelected}
+              className={
+                this.state.selected === "/create-task" ? "selected" : "navLink"
+              }
+              to="/create-task"
+            >
+              <i className="far fa-calendar-plus"></i>
+              <br /> New Task
+            </Link>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 }
 
-export default Navbar;
+export default withRouter(Navbar);

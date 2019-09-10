@@ -14,9 +14,9 @@ const Login = ({ handleSubmit }) => {
             setEmail('')
             setPassword('')
         }}>                
-                <input placeholder="Email" type="email" name="email" value={email} onChange={e => setEmail(e.target.value)} /><br />
+                <input placeholder="Email" type="email" name="email" value={email} onChange={e => setEmail(e.target.value)} required/><br />
                 
-                <input placeholder="Password" type="password" name="password" value={password} onChange={e => setPassword(e.target.value)} /><br /><br />
+                <input placeholder="Password" type="password" name="password" value={password} onChange={e => setPassword(e.target.value)} required/><br /><br />
                 <input className="ButtonPinkCenter" type="submit" value="LOGIN"/>
             </form>
 

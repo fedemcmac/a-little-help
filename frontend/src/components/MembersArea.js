@@ -8,8 +8,10 @@ import JobForm from "./JobForm";
 import Navbar from "./Navbar";
 import JobShow from "./JobShow";
 import CreatedJobs from "./CreatedJobs";
+import NotFound from './NotFound'
 
 class MembersArea extends Component {
+  
   redirectToJobShowPage = id => {
     this.props.history.replace({ pathname: "/task/" + id });
   };
@@ -108,7 +110,8 @@ class MembersArea extends Component {
           />
           <Route
             path="/create-task"
-            component={() => <JobForm submit={this.props.submitJob} />}
+            component={() => <JobForm submit={this.props.submitJob} //turnEditOff={this.props.redirectToJobShowPage}
+             />}
           />
           <Route
             path="/task/:id"
@@ -123,6 +126,7 @@ class MembersArea extends Component {
               />
             )}
           />
+          <Route component={NotFound} />
         </Switch>
         </div>
       </div>

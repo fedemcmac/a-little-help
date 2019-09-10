@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Header from "./Header";
+import LocationSearchInput from "./LocationSearchInput";
 
 class JobForm extends Component {
   state = {
@@ -7,11 +8,23 @@ class JobForm extends Component {
     summary: "",
     category: "",
     description: "",
+    address: "",
+    lat: null,
+    lng: null,
     id: null
   };
 
   updateState = event => {
     this.setState({ [event.target.name]: event.target.value });
+  };
+
+  updateAddressState = value => {
+    this.setState({ address: value });
+  };
+
+  updateCoordinates = latLng => {
+    console.log(latLng);
+    this.setState({ lat: latLng.lat, lng: latLng.lng });
   };
 
   componentDidMount() {
@@ -21,6 +34,9 @@ class JobForm extends Component {
         summary: this.props.jobToEdit.summary,
         category: this.props.jobToEdit.category,
         description: this.props.jobToEdit.description,
+        address: this.props.jobToEdit.address,
+        lat: this.props.jobToEdit.lat,
+        lng: this.props.jobToEdit.lng,
         id: this.props.jobToEdit.id
       });
     }
@@ -28,7 +44,7 @@ class JobForm extends Component {
 
   render() {
     return (
-      <div className="fixed">
+      <div className="scrollable">
         <Header
           title={this.props.jobToEdit ? "Edit task" : "Create new task"}
         />
@@ -36,12 +52,17 @@ class JobForm extends Component {
         <form
           onSubmit={e => {
             e.preventDefault();
-            this.props.submit({ ...this.state });
+            this.props.submit({ ...this.state }).then(data => {
+              if (this.props.jobToEdit) {this.props.turnEditOff(data)}
+            });
             this.setState({
               title: "",
               summary: "",
               category: "",
               description: "",
+              address: "",
+              lat: null,
+              lng: null,
               id: null
             });
           }}
@@ -55,6 +76,8 @@ class JobForm extends Component {
             name="title"
             value={this.state.title}
             onChange={e => this.updateState(e)}
+            maxlength="50" ////////////////////////////////////////////////////////////////MAXLENGTH/////////////////////////////
+            required
           />
           <br />
           <label className="plainText">Task summary: </label>
@@ -66,6 +89,7 @@ class JobForm extends Component {
             name="summary"
             value={this.state.summary}
             onChange={e => this.updateState(e)}
+            required
           />
           <br />
           <label className="plainText">Category:</label>
@@ -76,7 +100,7 @@ class JobForm extends Component {
               value={this.state.category}
               onChange={e => this.updateState(e)}
             >
-              <option value="N/A">N/A</option>
+              <option value="Other">Other</option>
               <option value="Remote">Remote</option>
               <option value="Misc">Misc</option>
               <option value="Physically demanding">Physically demanding</option>
@@ -85,9 +109,7 @@ class JobForm extends Component {
               <option value="Animals">Animals</option>
               <option value="Elderly">Elderly</option>
               <option value="Children">Children</option>
-              <option value="Other">Other</option>
             </select>
-
           </div>
 
           <br />
@@ -100,8 +122,15 @@ class JobForm extends Component {
             name="description"
             value={this.state.description}
             onChange={e => this.updateState(e)}
+            required
           />
           <br />
+          <label className="plainText">Location:</label>
+          <LocationSearchInput
+            handleChange={this.updateAddressState}
+            addressState={this.state.address}
+            updateCoordinates={this.updateCoordinates}
+          />
           <button className="ButtonPinkCenter">
             {this.props.jobToEdit ? "EDIT TASK" : "CREATE TASK"}
           </button>

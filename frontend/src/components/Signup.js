@@ -15,9 +15,9 @@ const Signup = ({ handleSubmit }) => {
                 setEmail('')
                 setPassword('')
             }}>
-                <input placeholder="Username" type="text" name="username" value={username} onChange={e => setUsername(e.target.value)} /><br />
-                <input placeholder="Email" type="email" name="email" value={email} onChange={e => setEmail(e.target.value)} /><br />
-                <input placeholder="Password" type="password" name="password" value={password} onChange={e => setPassword(e.target.value)} /><br />
+                <input placeholder="Username" type="text" name="username" value={username} onChange={e => setUsername(e.target.value)} required/><br />
+                <input placeholder="Email" type="email" name="email" value={email} onChange={e => setEmail(e.target.value)} required/><br />
+                <input placeholder="Password" type="password" name="password" value={password} onChange={e => setPassword(e.target.value)} required/><br />
                 <input className="ButtonPinkCenter" type="submit" value="SIGN UP"/>
             </form>
             <p className="toggleSignupLoginText" >Already have an account?

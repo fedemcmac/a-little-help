@@ -8,11 +8,14 @@ const acceptJobUrl = `${endpoint}/accept_job`;
 
 const jsonify = res => {
   if (res.ok) return res.json();
-  else throw res.json();
+  else throw res;
 };
 
 const handleServerError = response => {
-  throw response;
+  if (response.status === 401) {
+    return Promise.resolve({ error: "unauthorized" });
+  }
+  throw response.json();
 };
 
 const saveToken = data => {
@@ -37,7 +40,7 @@ const signUp = user =>
     .then(saveToken)
     .catch(handleServerError);
 
-const logIn = user => 
+const logIn = user =>
   fetch(loginUrl, {
     method: "POST",
     headers: {
@@ -58,11 +61,11 @@ const validateUser = () => {
   })
     .then(jsonify)
     .then(saveToken)
-    .catch(handleServerError);
+    .catch(handleServerError); //////////////////////////////////////////////////
 };
 
-const postJob = job =>
-  fetch(jobsUrl, {
+const postJob = job => {
+  return fetch(jobsUrl, {
     method: "POST",
     body: JSON.stringify({ job }),
     headers: constructHeaders({
@@ -72,6 +75,7 @@ const postJob = job =>
   })
     .then(jsonify)
     .catch(handleServerError);
+};
 
 const getJobs = () =>
   fetch(jobsUrl, {
@@ -79,8 +83,7 @@ const getJobs = () =>
       "Content-Type": "application/json",
       Accept: "application/json"
     })
-  }).then(jsonify)
-  
+  }).then(jsonify);
 
 const clearToken = () => localStorage.removeItem("token");
 

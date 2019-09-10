@@ -12,15 +12,14 @@ class App extends Component {
   };
 
   componentDidMount() {
-    API.validateUser()
-      .then(user => {
-        if (!user.error) {
-          this.setState({ user: user });
-          this.fetchJobs()
-        } else {
-          this.props.history.push("/welcome");
-        }
-      })
+    API.validateUser().then(user => {
+      if (!user.error) {
+        this.setState({ user: user });
+        this.fetchJobs();
+      } else {
+        this.props.history.push("/welcome");
+      }
+    });
   }
 
   fetchJobs = () => {
@@ -57,11 +56,27 @@ class App extends Component {
   logIn = user => {
     API.logIn(user)
       .then(user => {
-        this.setState({ user: user });
+        if (!user.error) {
+          this.setState({ user: user });
+          this.fetchJobs();
+        } else {
+          this.props.history.push("/welcome");
+        }
       })
       .then(() => this.fetchJobs())
       .then(this.props.history.push("/dashboard"));
   };
+
+  // componentDidMount() {
+  //   API.validateUser().then(user => {
+  //     if (!user.error) {
+  //       this.setState({ user: user });
+  //       this.fetchJobs();
+  //     } else {
+  //       this.props.history.push("/welcome");
+  //     }
+  //   });
+  // }
 
   logOut = () => {
     API.clearToken();
@@ -70,11 +85,18 @@ class App extends Component {
   };
 
   submitJob = job => {
-    API.postJob(job).then(data =>
-      this.setState({
-        jobs: [...this.state.jobs, data.job]
+    return API.postJob(job)
+      .then(data => {
+        this.setState({
+          jobs: [...this.state.jobs, data.job]
+        });
+        return data;
       })
-    );
+      .then(data => {
+        this.props.history.push(`/task/${data.job.id}`);
+        console.log(data);
+        return data;
+      });
   };
 
   dropJob = id => {
@@ -102,15 +124,20 @@ class App extends Component {
   };
 
   editJob = job => {
-    API.editJob(job).then(data =>
-      this.setState({
-        jobs: [
-          ...this.state.jobs.filter(job => job.id !== data.job.id),
-          data.job
-        ]
+    return API.editJob(job)
+      .then(data => {
+        this.setState({
+          jobs: [
+            ...this.state.jobs.filter(job => job.id !== data.job.id),
+            data.job
+          ]
+        });
+        return data;
       })
-    );
-    this.props.history.push("/my-tasks");
+      .then(data => {
+        this.props.history.push(`/task/${data.job.id}`);
+        return data;
+      });
   };
 
   deleteJob = id => {
