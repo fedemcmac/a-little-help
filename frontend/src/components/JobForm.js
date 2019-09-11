@@ -6,7 +6,7 @@ class JobForm extends Component {
   state = {
     title: "",
     summary: "",
-    category: "",
+    category: "N/A",
     description: "",
     address: "",
     lat: null,
@@ -58,7 +58,7 @@ class JobForm extends Component {
             this.setState({
               title: "",
               summary: "",
-              category: "",
+              category: "N/A",
               description: "",
               address: "",
               lat: null,
