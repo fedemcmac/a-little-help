@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+
+    # validates :email, uniqueness: true#, :message => "This email has already been used"
+
     has_secure_password
     has_many :jobs
     alias_attribute :created_jobs, :jobs

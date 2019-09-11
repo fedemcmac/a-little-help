@@ -7,9 +7,9 @@ import ProfileCard from "./ProfileCard";
 class Profile extends Component {
   state = { edit: false };
 
-  toggleEdit = () => {
-    this.setState({ edit: true });
-  };
+  // toggleEdit = () => {
+  //   this.setState({ edit: true });
+  // };
 
   whatToRender = () => {
     if (this.state.edit) {
@@ -25,9 +25,9 @@ class Profile extends Component {
           <Link className="noUnderlineLink" to="/created-tasks">
             <button className="ButtonPinkCenter">YOUR CREATED TASKS</button>
           </Link>
-          <button className="ButtonPinkCenter" onClick={this.toggleEdit}>
+          {/* <button className="ButtonPinkCenter" onClick={this.toggleEdit}>
             EDIT YOUR DETAILS
-          </button>
+          </button> */}
           <Link className="noUnderlineLink" to="/instructions/1">
             <button className="ButtonPinkCenter">INSTRUCTIONS</button>
           </Link>
