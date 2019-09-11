@@ -26,10 +26,11 @@ class LocationSearchInput extends React.Component {
       <PlacesAutocomplete
         value={this.props.addressState}
         onChange={(value) => this.props.handleChange(value)}
+        onSelect={(value) => this.props.handleChange(value)}
         // onChange={(e) => console.log(e)}
         // onChange={() => {debugger}}
         // onMouseHover={}
-        onSelect={this.handleSelect}
+        // onSelect={this.handleSelect}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div>

@@ -9,17 +9,17 @@ class MapContainer extends Component {
       position: "fixed",
       top: "0",
       left: "1.7rem",
-      bottom: "1rem",
+      bottom: "1rem"
     };
 
     return (
       <div className="mapContainer">
         <Map
           google={this.props.google}
-          zoom={2}
+          zoom={12}
           mapTypeControl={false}
           streetViewControl={false}
-          fullscreenControl={false} 
+          fullscreenControl={false}
           style={mapStyles}
           initialCenter={this.props.coordinates}
         >

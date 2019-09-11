@@ -76,7 +76,6 @@ class JobForm extends Component {
             name="title"
             value={this.state.title}
             onChange={e => this.updateState(e)}
-            maxlength="50" ////////////////////////////////////////////////////////////////MAXLENGTH/////////////////////////////
             required
           />
           <br />

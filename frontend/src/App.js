@@ -5,6 +5,14 @@ import Welcome from "./components/Welcome";
 import { withRouter, Route } from "react-router-dom";
 import MembersArea from "./components/MembersArea";
 
+import createHistory from "history/createBrowserHistory"
+
+export const history = createHistory()
+
+history.listen((location, action) => {
+    window.scrollTo(0, 0)
+})
+
 class App extends Component {
   state = {
     user: undefined,
@@ -16,7 +24,7 @@ class App extends Component {
   componentDidMount() {
     API.validateUser().then(user => {
       if (!user.error) {
-        this.setState({ user: user });
+        this.setState({ user: user, searchTerm: "", filterChoice: "" });
         this.fetchJobs();
       } else {
         this.props.history.push("/welcome");
@@ -96,7 +104,7 @@ class App extends Component {
       })
       .then(data => {
         this.props.history.push(`/task/${data.job.id}`);
-        console.log(data);
+        // console.log(data);
         return data;
       });
   };
@@ -172,27 +180,26 @@ class App extends Component {
   };
 
   filterJobs = () => {
-      return this.state.jobs.filter(job => {
-        if (this.state.filterChoice === "") return true;
-        if (this.state.filterChoice === "Remote")
-          return job.category === "Remote";
-        if (this.state.filterChoice === "Indoor")
-          return job.category === "Indoor";
-        if (this.state.filterChoice === "Outdoor")
-          return job.category === "Outdoor";
-        if (this.state.filterChoice === "Animals")
-          return job.category === "Animals";
-        if (this.state.filterChoice === "Children")
-          return job.category === "Children";
-        if (this.state.filterChoice === "Elderly")
-          return job.category === "Elderly";
-        if (this.state.filterChoice === "Physically demanding")
-          return job.category === "Physically demanding";
-        if (this.state.filterChoice === "Misc") return job.category === "Misc";
-        if (this.state.filterChoice === "Other")
-          return job.category === "Other";
-        if (this.state.filterChoice === "N/A") return job.category === "N/A";
-      })
+    return this.state.jobs.filter(job => {
+      if (this.state.filterChoice === "") return true;
+      if (this.state.filterChoice === "Remote")
+        return job.category === "Remote";
+      if (this.state.filterChoice === "Indoor")
+        return job.category === "Indoor";
+      if (this.state.filterChoice === "Outdoor")
+        return job.category === "Outdoor";
+      if (this.state.filterChoice === "Animals")
+        return job.category === "Animals";
+      if (this.state.filterChoice === "Children")
+        return job.category === "Children";
+      if (this.state.filterChoice === "Elderly")
+        return job.category === "Elderly";
+      if (this.state.filterChoice === "Physically demanding")
+        return job.category === "Physically demanding";
+      if (this.state.filterChoice === "Misc") return job.category === "Misc";
+      if (this.state.filterChoice === "Other") return job.category === "Other";
+      if (this.state.filterChoice === "N/A") return job.category === "N/A";
+    });
   };
 
   // resetSearchTermAndFilterChoiceState = () => this.setState({ searchTerm: "", filterChoice: "" });

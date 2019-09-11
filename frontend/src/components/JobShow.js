@@ -43,9 +43,21 @@ class JobShow extends Component {
           <p>Address: {job.address}</p>
           <p>{job.description}</p>
           <p>
-            To organise the details or for any questions you can email {job.owner.username} at {job.owner.email}
+            To organise the details or for any questions you can email{" "}
+            {job.owner.username} at {job.owner.email}
           </p>
           {this.renderButtons(job)}
+          {this.state.selectedJob &&
+          this.state.edit === false &&
+          this.state.selectedJob.lat &&
+          this.state.selectedJob.lng ? (
+            <MapContainer
+              coordinates={{
+                lat: this.state.selectedJob.lat,
+                lng: this.state.selectedJob.lng
+              }}
+            />
+          ) : null}
         </div>
       );
     }
@@ -91,19 +103,7 @@ class JobShow extends Component {
   };
 
   render() {
-    return (
-      <div>
-        {this.renderJob(this.state.selectedJob)}
-        {this.state.selectedJob && this.state.edit === false && this.state.selectedJob.lat && this.state.selectedJob.lng? (
-          <MapContainer
-            coordinates={{
-              lat: this.state.selectedJob.lat,
-              lng: this.state.selectedJob.lng
-            }}
-          />
-        ) : null}
-      </div>
-    );
+    return <div className="fullHeight">{this.renderJob(this.state.selectedJob)}</div>;
   }
 }
 
