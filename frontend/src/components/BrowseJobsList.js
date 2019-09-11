@@ -1,7 +1,7 @@
 import React from "react";
 import JobCard from "./JobCard";
 import Header from "./Header";
-import Searchbar from "./Searchbar";
+import Searchbar from './Searchbar'
 
 const BrowseJobsList = ({
   availableJobs,
@@ -14,14 +14,10 @@ const BrowseJobsList = ({
     <div className="scrollable">
       <Header title="Available tasks" />
       <div imageclass="flexJobsCardsContainer">
-        <Searchbar
-          key="searchbar"
-          updateSearchTerm={updateSearchTerm}
-          searchTerm={searchTerm}
-        />
+      <Searchbar key="searchbar" updateSearchTerm={updateSearchTerm} searchTerm={searchTerm}/>
         {availableJobs.length === 0 ? (
           <p className="plainText">
-            There are no available tasks at the moment
+            There are no available tasks
           </p>
         ) : (
           availableJobs.map(job => (

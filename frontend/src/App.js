@@ -42,7 +42,7 @@ class App extends Component {
   availableJobs = () => {
     const helping_jobs = this.userHelpingJobs();
     const created_jobs = this.userCreatedJobs();
-    return this.state.jobs.filter(job => {
+    return this.searchJobs().filter(job => {
       return !helping_jobs.includes(job) && !created_jobs.includes(job);
     });
   };
@@ -153,14 +153,32 @@ class App extends Component {
     return this.state.jobs.find(job => job.id === parseInt(id));
   };
 
-  updateSearchTerm = (event) => {
-    this.setState({ searchTerm: event.target.value })
-    // this.searchJobs()
-  }
+  updateSearchTerm = event => {
+    this.setState({ searchTerm: event.target.value });
+    this.searchJobs();
+  };
 
   searchJobs = () => {
-    return this.state.jobs.filter(job => job.title.toLocaleLowerCase().includes(this.state.searchTerm.toLocaleLowerCase()))
-  } 
+    return this.state.jobs.filter(job => {
+      return job.title
+        .toLocaleLowerCase()
+        .includes(this.state.searchTerm.toLocaleLowerCase());
+    });
+  };
+
+  // resetSearchTermState = () => this.setState({ searchTerm: "" });
+
+  // urlChangedAndSearchIsNotEmpty = () => this.props.location.pathname !== "/browse-tasks" && this.state.searchTerm
+
+  // resetSearchIfUrlChangedAndSearchIsNotEmpty = () => {
+  //   if (this.urlChangedAndSearchIsNotEmpty()) {
+  //     this.resetSearchTermState();
+  //   }
+  // }
+
+  // componentDidUpdate() { 
+  //   this.resetSearchIfUrlChangedAndSearchIsNotEmpty()
+  // }
 
   render() {
     return (

@@ -21,7 +21,7 @@ class MembersArea extends Component {
         <div className="top_level_navbar" id="top_level_navbar">
           <Navbar />
         </div>
-        <div className="top_level_contents">
+        <div className="top_level_contents" key="top_level_contents">
           <Switch>
             <Route
               path="/instructions/1"
@@ -78,7 +78,7 @@ class MembersArea extends Component {
             />
             <Route
               path="/browse-tasks"
-              component={() => (
+              render={() => (
                 <BrowseJobsList
                   key="browse-job-list"
                   availableJobs={this.props.availableJobs}

@@ -1,7 +1,6 @@
 import React from "react";
 
 const Searchbar = ({ updateSearchTerm, searchTerm }) => {
-    console.log("search bar");
   return (
     <div className="iconContainer">
       <input

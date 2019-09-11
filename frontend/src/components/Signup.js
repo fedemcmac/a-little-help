@@ -21,7 +21,7 @@ const Signup = ({ handleSubmit }) => {
                 <input className="ButtonPinkCenter" type="submit" value="SIGN UP"/>
             </form>
             <p className="toggleSignupLoginText" >Already have an account?
-                <Link className="wordLink" to="/welcome/login"> Login</Link>
+                <Link id="loginLink" className="wordLink" to="/welcome/login"> Login</Link>
             </p>
         </div>
     )
