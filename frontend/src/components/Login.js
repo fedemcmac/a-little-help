@@ -21,7 +21,7 @@ const Login = ({ handleSubmit }) => {
             </form>
 
             <p className="toggleSignupLoginText" >Don't have an account?
-            <Link className="wordLink" to="/welcome/signup"> Sign Up</Link>
+            <Link id="signupLink" className="wordLink" to="/welcome/signup"> Sign Up</Link>
             </p>
         </div>
     )
