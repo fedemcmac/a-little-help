@@ -497,3 +497,7 @@ select {
   /* position: relative;
   padding-bottom: 7rem; */
 }
+
+#filter-jobs {
+  padding-top: 0.8rem;
+}

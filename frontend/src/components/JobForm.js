@@ -101,15 +101,15 @@ class JobForm extends Component {
               onChange={e => this.updateState(e)}
             >
               <option value="N/A">Choose a category</option>
-              <option value="Other">Other</option>
               <option value="Remote">Remote</option>
-              <option value="Misc">Misc</option>
-              <option value="Physically demanding">Physically demanding</option>
-              <option value="Outdoor">Outdoor</option>
               <option value="Indoor">Indoor</option>
+              <option value="Outdoor">Outdoor</option>
               <option value="Animals">Animals</option>
-              <option value="Elderly">Elderly</option>
               <option value="Children">Children</option>
+              <option value="Elderly">Elderly</option>
+              <option value="Physically demanding">Physically demanding</option>
+              <option value="Misc">Misc</option>
+              <option value="Other">Other</option>
             </select>
           </div>
 

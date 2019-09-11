@@ -9,7 +9,8 @@ class App extends Component {
   state = {
     user: undefined,
     jobs: [],
-    searchTerm: ""
+    searchTerm: "",
+    filterChoice: ""
   };
 
   componentDidMount() {
@@ -159,25 +160,53 @@ class App extends Component {
   };
 
   searchJobs = () => {
-    return this.state.jobs.filter(job => {
+    return this.filterJobs().filter(job => {
       return job.title
         .toLocaleLowerCase()
         .includes(this.state.searchTerm.toLocaleLowerCase());
     });
   };
 
-  // resetSearchTermState = () => this.setState({ searchTerm: "" });
+  updateFilterChoice = event => {
+    this.setState({ filterChoice: event.target.value });
+  };
 
-  // urlChangedAndSearchIsNotEmpty = () => this.props.location.pathname !== "/browse-tasks" && this.state.searchTerm
+  filterJobs = () => {
+      return this.state.jobs.filter(job => {
+        if (this.state.filterChoice === "") return true;
+        if (this.state.filterChoice === "Remote")
+          return job.category === "Remote";
+        if (this.state.filterChoice === "Indoor")
+          return job.category === "Indoor";
+        if (this.state.filterChoice === "Outdoor")
+          return job.category === "Outdoor";
+        if (this.state.filterChoice === "Animals")
+          return job.category === "Animals";
+        if (this.state.filterChoice === "Children")
+          return job.category === "Children";
+        if (this.state.filterChoice === "Elderly")
+          return job.category === "Elderly";
+        if (this.state.filterChoice === "Physically demanding")
+          return job.category === "Physically demanding";
+        if (this.state.filterChoice === "Misc") return job.category === "Misc";
+        if (this.state.filterChoice === "Other")
+          return job.category === "Other";
+        if (this.state.filterChoice === "N/A") return job.category === "N/A";
+      })
+  };
 
-  // resetSearchIfUrlChangedAndSearchIsNotEmpty = () => {
+  // resetSearchTermAndFilterChoiceState = () => this.setState({ searchTerm: "", filterChoice: "" });
+
+  // urlChangedAndSearchIsNotEmpty = () => this.props.location.pathname !== "/browse-tasks" && this.state.searchTerm && this.state.filterChoice
+
+  // resetSearchAndFilterIfUrlChangedAndSearchOrFilterAreNotEmpty = () => {
   //   if (this.urlChangedAndSearchIsNotEmpty()) {
-  //     this.resetSearchTermState();
+  //     this.resetSearchTermAndFilterChoiceState();
   //   }
   // }
 
-  // componentDidUpdate() { 
-  //   this.resetSearchIfUrlChangedAndSearchIsNotEmpty()
+  // componentDidUpdate() {
+  //   this.resetSearchAndFilterIfUrlChangedAndSearchOrFilterAreNotEmpty()
   // }
 
   render() {
@@ -204,6 +233,8 @@ class App extends Component {
                 updateSearchTerm={this.updateSearchTerm}
                 searchTerm={this.state.searchTerm}
                 path={this.props.location.pathname}
+                filterChoice={this.state.filterChoice}
+                updateFilterChoice={this.updateFilterChoice}
               />
             )}
           />

@@ -28,6 +28,7 @@ class LocationSearchInput extends React.Component {
         onChange={(value) => this.props.handleChange(value)}
         // onChange={(e) => console.log(e)}
         // onChange={() => {debugger}}
+        // onMouseHover={}
         onSelect={this.handleSelect}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
