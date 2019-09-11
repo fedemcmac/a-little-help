@@ -38,14 +38,16 @@ class JobShow extends Component {
         <div className="scrollable">
           <Header title={`Task #${job.id}`} />
           <h2 className="bigAndPinkAndAwayFromHeader">{job.title}</h2>
-          <p>Summary: {job.summary}</p>
-          <p>Category: {job.category}</p>
-          <p>Address: {job.address}</p>
-          <p>{job.description}</p>
-          <p>
-            To organise the details or for any questions you can email{" "}
-            {job.owner.username} at {job.owner.email}
-          </p>
+          <div className="jobDetails">
+            <p>Summary: {job.summary}</p>
+            <p>Category: {job.category}</p>
+            <p>Address: {job.address}</p>
+            <p>{job.description}</p>
+            <p>
+              To organise the details or for any questions you can email{" "}
+              {job.owner.username} at {job.owner.email}
+            </p>
+          </div>
           {this.renderButtons(job)}
           {this.state.selectedJob &&
           this.state.edit === false &&
@@ -103,7 +105,9 @@ class JobShow extends Component {
   };
 
   render() {
-    return <div className="fullHeight">{this.renderJob(this.state.selectedJob)}</div>;
+    return (
+      <div className="fullHeight">{this.renderJob(this.state.selectedJob)}</div>
+    );
   }
 }
 

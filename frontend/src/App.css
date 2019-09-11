@@ -519,3 +519,8 @@ select {
 .top_level_contents {
   height: 100%;
 }
+
+.jobDetails {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
