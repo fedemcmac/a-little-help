@@ -17,7 +17,7 @@ class MembersArea extends Component {
 
   render() {
     return (
-      <div>
+      <div className="fullHeight">
         <div className="top_level_navbar" id="top_level_navbar">
           <Navbar />
         </div>
