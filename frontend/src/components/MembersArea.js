@@ -86,6 +86,8 @@ class MembersArea extends Component {
                   redirectToJobShowPage={this.redirectToJobShowPage}
                   updateSearchTerm={this.props.updateSearchTerm}
                   searchTerm={this.props.searchTerm}
+                  filterChoice={this.props.filterChoice}
+                  updateFilterChoice={this.props.updateFilterChoice}
                 />
               )}
             />
