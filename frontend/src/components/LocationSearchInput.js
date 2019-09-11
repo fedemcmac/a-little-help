@@ -1,61 +1,60 @@
-import React from 'react';
+import React from "react";
 import PlacesAutocomplete, {
   geocodeByAddress,
-  getLatLng,
-} from 'react-places-autocomplete';
- 
+  getLatLng
+} from "react-places-autocomplete";
+
 class LocationSearchInput extends React.Component {
-  
   // state = { address: '' };
-  
- 
+
   // handleChange = address => {
   //   this.setState({ address });
   // };
- 
+
   handleSelect = address => {
+    this.props.handleChange(address);
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
       .then(latLng => this.props.updateCoordinates(latLng))
       // .then(latLng => console.log('Success', latLng))
-      .catch(error => console.error('Error', error));
+      .catch(error => console.error("Error", error));
   };
- 
+
   render() {
     return (
       <PlacesAutocomplete
         value={this.props.addressState}
-        onChange={(value) => this.props.handleChange(value)}
-        onSelect={(value) => this.props.handleChange(value)}
+        onChange={value => this.props.handleChange(value)}
+        // onSelect={(value) => this.props.handleChange(value)}
         // onChange={(e) => console.log(e)}
         // onChange={() => {debugger}}
         // onMouseHover={}
-        // onSelect={this.handleSelect}
+        onSelect={this.handleSelect}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div>
             <input
               {...getInputProps({
-                name:"address",
-                placeholder: 'Search Places ...',
-                className: 'location-search-input',
+                name: "address",
+                placeholder: "Search Places ...",
+                className: "location-search-input"
               })}
             />
             <div className="autocomplete-dropdown-container">
               {loading && <div>Loading...</div>}
               {suggestions.map(suggestion => {
                 const className = suggestion.active
-                  ? 'suggestion-item--active'
-                  : 'suggestion-item';
+                  ? "suggestion-item--active"
+                  : "suggestion-item";
                 // inline style for demonstration purpose
                 const style = suggestion.active
-                  ? { backgroundColor: '#01bcd6', cursor: 'pointer' }
-                  : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                  ? { backgroundColor: "#01bcd6", cursor: "pointer" }
+                  : { backgroundColor: "#ffffff", cursor: "pointer" };
                 return (
                   <div
                     {...getSuggestionItemProps(suggestion, {
                       className,
-                      style,
+                      style
                     })}
                   >
                     <span>{suggestion.description}</span>
@@ -70,4 +69,4 @@ class LocationSearchInput extends React.Component {
   }
 }
 
-export default LocationSearchInput
+export default LocationSearchInput;
