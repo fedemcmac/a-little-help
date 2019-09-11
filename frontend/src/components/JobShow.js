@@ -38,6 +38,7 @@ class JobShow extends Component {
         <div className="scrollable">
           <Header title={`Task #${job.id}`} />
           <h2 className="bigAndPinkAndAwayFromHeader">{job.title}</h2>
+          <div className="jobDetails">
           <p>Summary: {job.summary}</p>
           <p>Category: {job.category}</p>
           <p>Address: {job.address}</p>
@@ -46,6 +47,7 @@ class JobShow extends Component {
             To organise the details or for any questions you can email{" "}
             {job.owner.username} at {job.owner.email}
           </p>
+          </div>
           {this.renderButtons(job)}
           {this.state.selectedJob &&
           this.state.edit === false &&
