@@ -1,11 +1,11 @@
 import React from "react";
 
-const JobCard = ({ job, handleButtonClick, buttonText, handleJobClick }) => {
+const JobCard = ({ job, handleButtonClick, buttonText, handleJobClick, path }) => {
   return (
     <div className="flexJobCard">
       <div onClick={() => handleJobClick(job.id)}>
         <p className="bigAndPinkJobCardTitle">{job.title}</p>
-        <p className="plainText">{job.summary}</p>
+        {path !== '/created-tasks' ? <p className="plainText">{job.summary}</p> : null}
         <p className="plainText">{job.address}</p>
       </div>
       {/* <div> */}

@@ -41,10 +41,9 @@ class JobShow extends Component {
           <p>Summary: {job.summary}</p>
           <p>Category: {job.category}</p>
           <p>Address: {job.address}</p>
-          <p>Owner: {job.owner.username}</p>
           <p>{job.description}</p>
           <p>
-            If you have any questions email: {job.owner.email}
+            To organise the details or for any questions you can email {job.owner.username} at {job.owner.email}
           </p>
           {this.renderButtons(job)}
         </div>

@@ -28,7 +28,7 @@ class MembersArea extends Component {
               component={() => (
                 <Instructions
                   header="A little help"
-                  title="Share some love by micro-volunteering, help people in your neighborhood with small tasks!"
+                  title="Share some love by micro-volunteering, help people anywhere and anytime with small tasks."
                   imgClass="map"
                   imgSrc={require("../images/map.png")}
                   imgAlt="map"
@@ -42,7 +42,7 @@ class MembersArea extends Component {
               component={() => (
                 <Instructions
                   header="It's easy!"
-                  title="Find tasks you would like to help with, whenever and wherever you want"
+                  title="Find the tasks you want to help with, contact their owner and organise the details together."
                   imgClass="phone"
                   imgSrc={require("../images/phone.png")}
                   imgAlt="phone"
@@ -96,6 +96,7 @@ class MembersArea extends Component {
                   userCreatedJobs={this.props.userCreatedJobs}
                   findJob={this.props.findJob}
                   redirectToJobShowPage={this.redirectToJobShowPage}
+                  path={this.props.path}
                 />
               )}
             />
@@ -114,7 +115,8 @@ class MembersArea extends Component {
               path="/create-task"
               component={() => (
                 <JobForm
-                  submit={this.props.submitJob} //turnEditOff={this.props.redirectToJobShowPage}
+                  submit={this.props.submitJob}
+                  //turnEditOff={this.props.redirectToJobShowPage}
                 />
               )}
             />

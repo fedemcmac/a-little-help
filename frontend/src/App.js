@@ -203,6 +203,7 @@ class App extends Component {
                 findJob={this.findJob}
                 updateSearchTerm={this.updateSearchTerm}
                 searchTerm={this.state.searchTerm}
+                path={this.props.location.pathname}
               />
             )}
           />

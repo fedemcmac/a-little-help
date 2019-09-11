@@ -2,7 +2,7 @@ import React from "react";
 import Header from "./Header";
 import JobCard from "./JobCard";
 
-const CreatedJobs = ({ userCreatedJobs, findJob, redirectToJobShowPage }) => {
+const CreatedJobs = ({ userCreatedJobs, findJob, redirectToJobShowPage, path }) => {
   return (
     <div className="scrollable">
       <Header title="Created jobs" />
@@ -15,6 +15,7 @@ const CreatedJobs = ({ userCreatedJobs, findJob, redirectToJobShowPage }) => {
             job={job}
             findJob={findJob}
             handleJobClick={redirectToJobShowPage}
+            path={path}
           />
         ))
       )}
