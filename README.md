@@ -43,4 +43,4 @@ npm start
 
 ### Notes
 
-This app is optimised for mobile use, please change your browser device settings accordingly.
+This app is optimised for mobile use, please change your browser's device settings accordingly.
