@@ -4,18 +4,26 @@ Use A Little Help to create tasks that you need help with, or browse others' tas
 
 ## Prerequisites
 
-Make sure you have Ruby installed. You can check in the terminal.
+Make sure you have installed:
+  * Ruby, version 2.2.2 or newer
+  * Postgres
+  * Rails
+
+You can check in the terminal:
 
 ```bash
 ruby -v
+rails -v
+postgres -V
 ```
 
-This should output some information on the installed Ruby version.
-If not, you can refer to the [Ruby documentation](https://www.ruby-lang.org/en/documentation/installation/) on how to install it.
+This should output some information on the installed versions.
+If not, you can refer to the [Ruby](https://www.ruby-lang.org/en/documentation/installation/), [Postgres](https://www.postgresql.org/) and [Rails](https://guides.rubyonrails.org/v5.0/getting_started.html) documentation.
 
 ## Getting Started
 
 Fork and clone this repository.
+Start Postgres.
 
 ## Installation
 
@@ -39,7 +47,8 @@ cd frontend
 npm install
 npm start
 ```
+#### All good to go!
 
 ### Notes
 
-This app is optimised for mobile use, please change your browser device settings accordingly.
+This app is optimised for mobile use, please change your browser's device settings accordingly.
