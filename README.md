@@ -39,6 +39,7 @@ cd frontend
 npm install
 npm start
 ```
+#### All good to go!
 
 ### Notes
 
