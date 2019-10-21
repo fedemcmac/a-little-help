@@ -4,10 +4,10 @@ Use A Little Help to create tasks that you need help with, or browse others' tas
 
 ## Prerequisites
 
-Make sure you have installed:
-*Ruby, version 2.2.2 or newer
-*Postgres
-*Rails
+*Make sure you have installed:
+  *Ruby, version 2.2.2 or newer
+  *Postgres
+  *Rails
 
 You can check in the terminal:
 
