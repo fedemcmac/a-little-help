@@ -180,6 +180,7 @@ class App extends Component {
   };
 
   filterJobs = () => {
+    // eslint-disable-next-line
     return this.state.jobs.filter(job => {
       if (this.state.filterChoice === "") return true;
       if (this.state.filterChoice === "Remote")
