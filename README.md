@@ -29,8 +29,8 @@ Start Postgres.
 
 ### Backend
 
-Move into the backend directory of this project.
-Use the gem manager [bundler](https://bundler.io/v2.0/guides/rails.html) to install all dependencies. Start the Rails server.
+Navigate to the backend directory of this project.
+Use the gem manager [bundler](https://bundler.io/v2.0/guides/rails.html) to install all dependencies. Start the Rails server, which should use port 3000.
 
 ```bash
 cd backend
@@ -40,13 +40,15 @@ rails start
 
 ### Frontend
 
-On a new terminal tab, move into the frontend directory inside the root directory of the project. Use the package manager [npm](https://www.npmjs.com/) to install all dependencies and start the server.
+On a new terminal tab, navigate to the frontend directory inside the root directory of the project. Use the package manager [npm](https://www.npmjs.com/) to install all dependencies and start the server on port 3001.
 
 ```bash
 cd frontend
 npm install
 npm start
 ```
+Visit localhost:3001.
+
 #### All good to go!
 
 ### Notes
