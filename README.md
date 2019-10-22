@@ -43,13 +43,15 @@ rails start
 
 ### Frontend
 
-On a new terminal tab, move into the frontend directory inside the root directory of the project. Use the package manager [npm](https://www.npmjs.com/) to install all dependencies and start the server.
+On a new terminal tab, navigate to the frontend directory inside the root directory of the project. Use the package manager [npm](https://www.npmjs.com/) to install all dependencies and start the server on port 3001.
 
 ```bash
 cd frontend
 npm install
 npm start
 ```
+Visit localhost:3001.
+
 #### All good to go!
 
 ### Notes
