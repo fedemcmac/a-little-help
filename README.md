@@ -30,7 +30,7 @@ Start Postgres.
 ### Backend
 
 Move into the backend directory of this project.
-Use the gem manager [bundler](https://bundler.io/v2.0/guides/rails.html) to install all dependencies. Start the Rails server. Run these commands, one at the time.
+Use the gem manager [bundler](https://bundler.io/v2.0/guides/rails.html) to install all dependencies. Start the Rails server. To do all that, run these commands, one at the time.
 
 ```bash
 cd backend
