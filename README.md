@@ -20,6 +20,8 @@ postgres -V
 This should output some information on the installed versions.
 If not, you can refer to the [Ruby](https://www.ruby-lang.org/en/documentation/installation/), [Postgres](https://www.postgresql.org/) and [Rails](https://guides.rubyonrails.org/v5.0/getting_started.html) documentation.
 
+You will also need a GoogleAPI key for this project. You can get one on the [GoogleAPI website](https://cloud.google.com/maps-platform/). Your project needs to enable the Maps Javascript API,Places API and Geocoding API.
+
 ## Getting Started
 
 Fork and clone this repository.
@@ -42,14 +44,40 @@ rails start
 
 ### Frontend
 
-On a new terminal tab, navigate to the frontend directory inside the root directory of the project. Use the package manager [npm](https://www.npmjs.com/) to install all dependencies and start the server on port 3001.
+On a new terminal tab, navigate to the frontend directory inside the root directory of the project. Use the package manager [npm](https://www.npmjs.com/) to install all dependencies. 
 
 ```bash
 cd frontend
 npm install
+```
+
+#### Google API
+
+Once you have a key, that needs to be inserted inside two files:
+the **index.html** file of this project, inside the **script tag**, where it says 'YOUR API KEY', then save:
+
+```bash
+<!-- insert your API key in the script tag beneath -->
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR API KEY&libraries=places"></script>
+```
+
+Same thing at the bottom of the **MapContainer.js** file, in the export statement, then save:
+
+```bash
+// insert your API key beneath
+export default GoogleApiWrapper({
+  apiKey: "YOUR API KEY" // leave the inverted commas
+})(MapContainer);
+```
+
+
+Start the server on port 3001.
+```bash
 npm start
 ```
+
 Visit localhost:3001.
+
 
 #### All good to go!
 
