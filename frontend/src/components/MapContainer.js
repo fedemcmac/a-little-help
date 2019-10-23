@@ -30,6 +30,7 @@ class MapContainer extends Component {
   }
 }
 
+// insert your API key down here
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyDc5Sk2qRCnrAHrWPwDt25MxCs4KFDXLhw"
+  apiKey: "YOUR API KEY" // leave the inverted commas
 })(MapContainer);
