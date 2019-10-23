@@ -20,7 +20,7 @@ postgres -V
 This should output some information on the installed versions.
 If not, you can refer to the [Ruby](https://www.ruby-lang.org/en/documentation/installation/), [Postgres](https://www.postgresql.org/) and [Rails](https://guides.rubyonrails.org/v5.0/getting_started.html) documentation.
 
-You will also need a GoogleAPI key for this project. You can get one on the [GoogleAPI website](https://cloud.google.com/maps-platform/). Your project needs to enable the Maps Javascript API,Places API and Geocoding API.
+You will also need a Google API key for this project. You can get one on the [Google API website](https://cloud.google.com/maps-platform/). Your project needs to enable the Maps Javascript API,Places API and Geocoding API.
 
 ## Getting Started
 
