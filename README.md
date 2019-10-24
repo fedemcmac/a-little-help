@@ -2,6 +2,8 @@
 
 Use A Little Help to create tasks that you need help with, or browse others' tasks and offer to help them.
 
+![](A-little-help-gif.gif)
+
 ## Prerequisites
 
 Make sure you have installed:
